@@ -1,0 +1,1846 @@
+<!DOCTYPE html>
+<html lang="sa-Latn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tridhā Darpaṇam · Module I — Viveka as Method</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Cinzel:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-void:#0d0906;
+  --bg-parchment:#181109;
+  --bg-panel:#1f160c;
+  --bg-panel-raised:#261b0f;
+  --line-hair:#3a2c18;
+  --gold:#c9a24b;
+  --gold-bright:#e8c878;
+  --gold-dim:#8a6e34;
+  --crimson:#8c2f2f;
+  --crimson-bright:#b8433f;
+  --rust:#a85a2e;
+  --ink:#e7dcc4;
+  --ink-dim:#b3a480;
+  --ink-faint:#7d7156;
+  --devanagari:'Noto Sans Devanagari', serif;
+  --display:'Cinzel', serif;
+  --body:'Spectral', serif;
+  --accent-serif:'Cormorant Garamond', serif;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(140,47,47,0.08), transparent 60%),
+    radial-gradient(ellipse at 80% 100%, rgba(168,90,46,0.07), transparent 55%),
+    var(--bg-void);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:17px;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--gold-dim); color:var(--bg-void);}
+
+/* ===== Texture overlay ===== */
+.grain{
+  position:fixed; inset:0; pointer-events:none; z-index:1; opacity:0.05; mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ===== Header ===== */
+header.masthead{
+  position:relative; z-index:2;
+  padding:5rem 6vw 3.5rem;
+  border-bottom:1px solid var(--line-hair);
+  text-align:center;
+  background:linear-gradient(180deg, rgba(140,47,47,0.06), transparent);
+}
+.eyebrow{
+  font-family:var(--display); font-size:0.72rem; letter-spacing:0.35em; text-transform:uppercase;
+  color:var(--rust); margin-bottom:1.4rem;
+}
+.eyebrow::before, .eyebrow::after{content:"◆"; color:var(--gold-dim); margin:0 0.8em; font-size:0.6rem; vertical-align:middle;}
+h1.title-devanagari{
+  font-family:var(--devanagari); font-weight:600; font-size:clamp(2.4rem,6vw,4rem);
+  color:var(--gold-bright); margin:0 0 0.3em; letter-spacing:0.01em;
+  text-shadow:0 0 40px rgba(200,160,75,0.15);
+}
+h1.title-latin{
+  font-family:var(--display); font-weight:500; font-size:clamp(1.1rem,2.4vw,1.6rem);
+  letter-spacing:0.12em; color:var(--ink-dim); margin:0 0 1.6rem; text-transform:uppercase;
+}
+.subtitle{
+  font-family:var(--accent-serif); font-style:italic; font-size:1.3rem; color:var(--ink-dim);
+  max-width:640px; margin:0 auto; line-height:1.5;
+}
+.module-badge{
+  display:inline-block; margin-top:2rem; padding:0.5em 1.4em; border:1px solid var(--gold-dim);
+  border-radius:2px; font-family:var(--display); font-size:0.75rem; letter-spacing:0.2em;
+  color:var(--gold); background:var(--bg-panel);
+}
+
+/* ===== Nav / paginator ===== */
+nav.module-nav{
+  position:sticky; top:0; z-index:10;
+  background:rgba(13,9,6,0.94); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line-hair);
+  padding:0.9rem 6vw; display:flex; gap:1.6rem; flex-wrap:wrap; align-items:center;
+  font-family:var(--display); font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase;
+}
+nav.module-nav a{color:var(--ink-dim); text-decoration:none; padding:0.3em 0; border-bottom:1px solid transparent; transition:color .2s,border-color .2s;}
+nav.module-nav a:hover{color:var(--gold-bright); border-color:var(--gold-dim);}
+nav.module-nav .nav-sep{color:var(--line-hair);}
+
+main{max-width:900px; margin:0 auto; padding:0 6vw 8rem; position:relative; z-index:2;}
+
+/* ===== Section chrome ===== */
+section.chapter{padding-top:5rem; scroll-margin-top:5rem;}
+.chapter-mark{
+  display:flex; align-items:center; gap:1.2rem; margin-bottom:0.6rem;
+}
+.chapter-num{
+  font-family:var(--devanagari); font-size:2.2rem; color:var(--crimson-bright); font-weight:600;
+}
+.chapter-eyebrow{font-family:var(--display); font-size:0.72rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--rust);}
+h2.chapter-title{
+  font-family:var(--display); font-weight:600; font-size:clamp(1.6rem,3.4vw,2.3rem);
+  color:var(--gold-bright); margin:0.3em 0 0.4em; line-height:1.25;
+}
+h2.chapter-title .dn{font-family:var(--devanagari); font-size:0.85em; color:var(--gold); display:block; margin-top:0.15em; font-weight:500;}
+.chapter-lede{font-family:var(--accent-serif); font-style:italic; font-size:1.22rem; color:var(--ink-dim); margin-bottom:2.2rem; max-width:65ch;}
+
+hr.ornament{border:none; text-align:center; margin:3rem 0; height:1.2rem;}
+hr.ornament::before{content:"❦"; color:var(--gold-dim); font-size:1.1rem;}
+
+h3.sub-h{
+  font-family:var(--display); font-weight:600; font-size:1.28rem; color:var(--gold);
+  margin:2.6rem 0 1rem; padding-bottom:0.5rem; border-bottom:1px solid var(--line-hair);
+}
+h4.sub-sub-h{font-family:var(--display); font-weight:600; font-size:1.02rem; letter-spacing:0.03em; color:var(--rust); margin:1.8rem 0 0.7rem;}
+
+p{margin:0 0 1.15em;}
+p.lead-para::first-letter{
+  font-family:var(--display); font-size:3.2em; float:left; line-height:0.8; padding:0.06em 0.1em 0 0;
+  color:var(--gold-bright);
+}
+
+.skt{font-family:var(--devanagari); color:var(--gold-bright); font-size:1.08em;}
+.iast{font-style:italic; color:var(--ink);}
+.term{color:var(--gold); font-style:italic;}
+strong{color:var(--gold-bright); font-weight:600;}
+a.inline-link{color:var(--rust); text-decoration:underline; text-decoration-color:var(--gold-dim);}
+
+/* ===== Verse blocks ===== */
+.verse-block{
+  background:var(--bg-panel); border-left:3px solid var(--crimson); border-radius:0 4px 4px 0;
+  padding:1.6rem 2rem; margin:1.8rem 0; position:relative;
+}
+.verse-block .vb-ref{
+  position:absolute; top:0.8rem; right:1.2rem; font-family:var(--display); font-size:0.68rem;
+  letter-spacing:0.1em; color:var(--ink-faint); text-transform:uppercase;
+}
+.verse-block .vb-skt{font-family:var(--devanagari); font-size:1.3rem; color:var(--gold-bright); line-height:2; margin-bottom:0.6rem;}
+.verse-block .vb-iast{font-style:italic; color:var(--ink-dim); font-size:0.98rem; margin-bottom:0.9rem; line-height:1.6;}
+.verse-block .vb-gloss{font-size:0.98rem; color:var(--ink);}
+
+/* ===== Tab widget (four-lens) ===== */
+.lens-widget{
+  margin:2.4rem 0; border:1px solid var(--line-hair); border-radius:6px; overflow:hidden;
+  background:var(--bg-panel);
+}
+.lens-header{
+  padding:1.1rem 1.5rem 0.9rem; border-bottom:1px solid var(--line-hair);
+  background:linear-gradient(180deg, rgba(200,160,75,0.06), transparent);
+}
+.lens-header .lw-title{font-family:var(--display); font-size:1.05rem; color:var(--gold-bright); font-weight:600;}
+.lens-header .lw-sub{font-family:var(--devanagari); color:var(--gold); font-size:1.15rem; margin-top:0.2rem;}
+.lens-tabs{display:flex; flex-wrap:wrap; border-bottom:1px solid var(--line-hair); background:var(--bg-void);}
+.lens-tab{
+  flex:1 1 auto; min-width:120px; padding:0.85em 1em; text-align:center; cursor:pointer;
+  font-family:var(--display); font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase;
+  color:var(--ink-faint); border-right:1px solid var(--line-hair); border-bottom:2px solid transparent;
+  transition:all .2s; user-select:none;
+}
+.lens-tab:last-child{border-right:none;}
+.lens-tab:hover{color:var(--ink-dim); background:rgba(200,160,75,0.04);}
+.lens-tab.active{color:var(--gold-bright); border-bottom:2px solid var(--crimson-bright); background:var(--bg-panel-raised);}
+.lens-panels{padding:1.6rem 1.8rem 1.8rem;}
+.lens-panel{display:none; animation:fadeIn .25s ease;}
+.lens-panel.active{display:block;}
+@keyframes fadeIn{from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:translateY(0);}}
+.lens-panel .lp-label{font-family:var(--display); font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--rust); margin-bottom:0.7rem;}
+.convergence-note{
+  margin-top:1rem; padding:1rem 1.2rem; border-top:1px dashed var(--line-hair);
+  background:rgba(140,47,47,0.05); border-radius:4px; font-size:0.95rem;
+}
+.convergence-note .cn-tag{
+  display:inline-block; font-family:var(--display); font-size:0.65rem; letter-spacing:0.14em;
+  text-transform:uppercase; padding:0.25em 0.7em; border-radius:2px; margin-bottom:0.6rem;
+}
+.cn-tag.converge{background:rgba(168,90,46,0.18); color:var(--gold-bright); border:1px solid var(--gold-dim);}
+.cn-tag.diverge{background:rgba(140,47,47,0.18); color:#e8a5a0; border:1px solid var(--crimson);}
+.cn-tag.partial{background:rgba(200,160,75,0.1); color:var(--ink-dim); border:1px solid var(--line-hair);}
+
+/* ===== Method diagram (simple SVG-free CSS structure) ===== */
+.viveka-ladder{
+  display:flex; flex-direction:column; gap:0; margin:2rem 0;
+  border:1px solid var(--line-hair); border-radius:6px; overflow:hidden;
+}
+.ladder-rung{
+  padding:1.1rem 1.5rem; border-bottom:1px solid var(--line-hair); background:var(--bg-panel);
+  display:grid; grid-template-columns:auto 1fr auto; gap:1rem; align-items:baseline;
+}
+.ladder-rung:last-child{border-bottom:none;}
+.ladder-rung:nth-child(odd){background:var(--bg-panel-raised);}
+.ladder-num{font-family:var(--devanagari); font-size:1.4rem; color:var(--crimson-bright); font-weight:600;}
+.ladder-label{font-family:var(--body); font-size:1rem;}
+.ladder-label .rl-skt{font-family:var(--devanagari); color:var(--gold-bright); display:block; font-size:1.05rem; margin-bottom:0.15rem;}
+.ladder-rejects{font-family:var(--accent-serif); font-style:italic; color:var(--ink-faint); font-size:0.9rem; text-align:right;}
+
+/* ===== Cakra table ===== */
+.cakra-grid{display:grid; grid-template-columns:1fr; gap:0.9rem; margin:2rem 0;}
+.cakra-row{
+  display:grid; grid-template-columns:110px 1fr 1fr 1fr; gap:1.2rem; padding:1rem 1.3rem;
+  background:var(--bg-panel); border:1px solid var(--line-hair); border-radius:5px; align-items:start;
+}
+.cakra-row.header-row{background:transparent; border:none; padding:0 1.3rem; font-family:var(--display);
+  font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-faint);}
+.cakra-name{font-family:var(--devanagari); color:var(--gold-bright); font-size:1.1rem;}
+.cakra-name .cn-verses{display:block; font-family:var(--display); font-size:0.65rem; letter-spacing:0.05em;
+  color:var(--rust); margin-top:0.3rem; text-transform:none;}
+.cakra-cell{font-size:0.92rem; color:var(--ink-dim); line-height:1.5;}
+
+/* ===== Footnote / marginalia ===== */
+.fn-ref{color:var(--gold); font-size:0.75em; vertical-align:super; cursor:pointer; text-decoration:none;}
+.margin-note{
+  font-family:var(--accent-serif); font-style:italic; font-size:0.92rem; color:var(--ink-faint);
+  border-left:2px solid var(--gold-dim); padding-left:1rem; margin:1.6rem 0;
+}
+
+/* ===== Divergence callout ===== */
+.callout{
+  margin:2rem 0; padding:1.4rem 1.7rem; border-radius:6px; border:1px solid var(--line-hair);
+  background:var(--bg-panel-raised);
+}
+.callout.warn{border-color:var(--crimson); }
+.callout .callout-tag{font-family:var(--display); font-size:0.68rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--crimson-bright); margin-bottom:0.5rem; display:block;}
+
+/* ===== Footer ===== */
+footer{
+  border-top:1px solid var(--line-hair); padding:3rem 6vw; text-align:center;
+  font-family:var(--display); font-size:0.75rem; letter-spacing:0.15em; color:var(--ink-faint);
+  text-transform:uppercase;
+}
+footer .fdn{font-family:var(--devanagari); font-size:1.1rem; color:var(--gold-dim); display:block; margin-bottom:0.8rem; letter-spacing:0.02em; text-transform:none;}
+
+@media(max-width:640px){
+  .cakra-row{grid-template-columns:1fr; gap:0.4rem;}
+  .cakra-row.header-row{display:none;}
+  main{padding:0 5vw 6rem;}
+  header.masthead{padding:3.5rem 5vw 2.5rem;}
+}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<header class="masthead">
+  <div class="eyebrow">Śāstrex Vāk · Series A Extended</div>
+  <h1 class="title-devanagari">त्रिधा दर्पणम्</h1>
+  <h1 class="title-latin">Tridhā Darpaṇam — The Triple Mirror</h1>
+  <p class="subtitle">An objective-front reading of the Devī nāma-valīs through Vedāntic, physiological, and neuroscientific lenses, anchored in the method and body-cosmology of Śrī Śaṅkarācārya</p>
+  <div class="module-badge">Module I · विवेकः पद्धतिः इति — Viveka as Method</div>
+</header>
+
+<nav class="module-nav">
+  <a href="#preamble">Preamble</a><span class="nav-sep">/</span>
+  <a href="#viveka-method">I. Viveka as Method</a><span class="nav-sep">/</span>
+  <a href="#three-vivekas">The Three Discriminations</a><span class="nav-sep">/</span>
+  <a href="#body-atlas">II. Saundaryalaharī Body-Atlas</a><span class="nav-sep">/</span>
+  <a href="#lens-template">III. The Tri-Lens Template</a><span class="nav-sep">/</span>
+  <a href="#worked-examples">Worked Examples</a><span class="nav-sep">/</span>
+  <a href="#convergence-criteria">IV. Convergence Criteria</a>
+</nav>
+
+<main>
+
+<section class="chapter" id="preamble">
+<div class="chapter-mark"><span class="chapter-eyebrow">Opening Position</span></div>
+<h2 class="chapter-title">Why Objectivity Requires Viveka, Not Neutrality<span class="dn">वस्तुनिष्ठता विवेकाधीना</span></h2>
+<p class="chapter-lede">An "objective front" on Devī-nāma material is not agnosticism about whether the names mean anything. It is a method for finding out what they assert, and testing that assertion against two independent bodies of evidence — the body as anatomy, and the brain as described by contemporary neuroscience.</p>
+
+<p class="lead-para">Three postures are available to anyone approaching the Lalitā Sahasranāma, the Triśatī, or the Devī Māhātmyam from outside a purely devotional frame. The first is reductive: treat the names as poetic ornament layered over folk physiology, worth cataloguing but not taking seriously as claims. The second is concordist: assume in advance that every name maps onto a real anatomical or neural structure, and go hunting for the mapping until one is found, however strained. The third — the one this series commits to — is analytic: treat each nāma as a discrete proposition about the structure of embodied consciousness, examine what warrant Vedānta gives for that proposition, examine what warrant anatomy and neuroscience independently give for a related but not identical proposition, and then state plainly whether the three converge, partially overlap, or talk past each other.</p>
+
+<p>This third posture needs a method, not a mood. The method used throughout this series — for all 1000 names of the Sahasranāma, the 300 of the Triśatī, and the 700 verses of the Saptaśatī — is borrowed directly from Śaṅkara, for a specific reason: Śaṅkara's own procedure in the <span class="term">Vivekacūḍāmaṇi</span> is already a discipline of discrimination between what a term claims to be permanent and what is in fact conditioned, and this is precisely the discipline an objective-front reader needs before touching a name like <span class="skt">भगमालिनी</span> (Bhagamālinī) or <span class="skt">कुण्डलिनी</span> (Kuṇḍalinī) and asking "what, if anything, is this actually a claim about?"</p>
+
+<div class="margin-note">A note on scope: this module does not yet analyze any nāma. Modules II–VI do that, name by name and verse by verse. This module builds the instrument.</div>
+
+</section>
+
+<hr class="ornament">
+
+<section class="chapter" id="viveka-method">
+<div class="chapter-mark"><span class="chapter-num">१</span><span class="chapter-eyebrow">Part One</span></div>
+<h2 class="chapter-title">The Vivekacūḍāmaṇi as Operating Method<span class="dn">विवेकचूडामणिः पद्धतिरूपेण</span></h2>
+<p class="chapter-lede">Śaṅkara's text is usually read as a soteriological manual. Read as method, it is a protocol for separating a nitya (permanent, unconditioned) referent from an anitya (impermanent, conditioned) one — exactly the separation a tri-lens reading of the nāma-valīs has to perform at every single entry.</p>
+
+<p>The Vivekacūḍāmaṇi opens (verses 1–31) with a diagnosis of why discrimination is rare and difficult to obtain, then spends the bulk of its roughly 580 verses building three successive discriminations, each of which strips away one more layer of false identification. These three — <span class="term">nitya-anitya-vastu-viveka</span>, <span class="term">dṛg-dṛśya-viveka</span>, and <span class="term">pañcakośa-viveka</span> — are not three separate topics. They are one procedure run at three depths, and this series uses all three, at three matching depths, on every nāma.</p>
+
+<h3 class="sub-h">1.1 — Nitya-Anitya-Vastu-Viveka: The First Filter</h3>
+<p>The opening discrimination Śaṅkara demands is between the eternal substance (<span class="iast">nitya vastu</span>) and everything non-eternal (<span class="iast">anitya</span>) — body, sense-organs, mind, and the objects those organs cognize. The famous verse states the stakes bluntly:</p>
+
+<div class="verse-block">
+<span class="vb-ref">Vivekacūḍāmaṇi · 6</span>
+<div class="vb-skt">दुर्लभं त्रयमेवैतद्देवानुग्रहहेतुकम् ।<br>मनुष्यत्वं मुमुक्षुत्वं महापुरुषसंश्रयः ॥</div>
+<div class="vb-iast">durlabhaṁ trayam evaitad devānugraha-hetukam &#124; manuṣyatvaṁ mumukṣutvaṁ mahāpuruṣa-saṁśrayaḥ &#124;&#124;</div>
+<div class="vb-gloss">Three things are rare and come only by divine grace: a human birth, the longing for liberation, and refuge at the feet of a great teacher.</div>
+</div>
+
+<p>What matters for this series is not the devotional weight of the verse but its structural function: Śaṅkara is establishing that most of what a person takes for granted — including the very apparatus (body, senses, mind) that will later be examined by anatomy and neuroscience — belongs on the anitya side of a first, coarse partition. This is not a rejection of the body. It is a classification of the body as <em>conditioned reality</em>, in contrast to a substrate the text calls unconditioned. For the tri-lens method, this is the license for lens separation itself: the Vedāntic lens and the physiological/neuroscientific lenses are not fighting over the same referent. Vedānta's referent claim, at this level, is about the unconditioned witness; anatomy's and neuroscience's referent claims are about the conditioned apparatus. Confusing the two — treating a Vedāntic term as though it were a claim about neuroanatomy, or a neuroanatomical claim as though it settled a Vedāntic question — is the single most common error this series is built to avoid.</p>
+
+<div class="callout">
+<span class="callout-tag">Method Rule 1</span>
+Before asking whether a nāma "corresponds to" a nerve plexus or brain network, first classify what kind of claim the nāma is making — vastu-level (about the substrate) or kośa-level (about a conditioned sheath). Only kośa-level claims are legitimate candidates for anatomical or neural correlation. Vastu-level claims are compared against nothing; they are noted as making no anatomical claim at all, and the convergence/divergence judgment says so explicitly rather than forcing a false correlate.
+</div>
+
+<h3 class="sub-h">1.2 — Dṛg-Dṛśya-Viveka: Witness and Witnessed</h3>
+<p>The second discrimination, developed extensively in verses 96–128 of the Vivekacūḍāmaṇi, separates the seer (<span class="iast">dṛś</span>, sākṣī, the witnessing awareness) from everything seen (<span class="iast">dṛśya</span>) — and crucially, the dṛśya category is shown to include not only external objects but the mind, the intellect, and even the sense of "I" as ordinarily experienced. Śaṅkara's argument is an inference from mutability: whatever changes, whatever can be observed as an object, cannot itself be the observer.</p>
+
+<div class="verse-block">
+<span class="vb-ref">Vivekacūḍāmaṇi · 108 (paraphrase-structure)</span>
+<div class="vb-skt">दृश्यत्वे सति नाशित्वं ...इति सर्वं जगत्त्यज ।</div>
+<div class="vb-iast">dṛśyatve sati nāśitvaṁ ... iti sarvaṁ jagat tyaja &#124;&#124;</div>
+<div class="vb-gloss">Whatever is an object of perception is, by that very fact, subject to change and dissolution — this reasoning is applied by Śaṅkara successively to the physical body, the prāṇa, the manas, and the buddhi, each shown in turn to be dṛśya and therefore not the witnessing self.</div>
+</div>
+
+<p>This matters directly for the neuroscience lens, because it pre-empts a specific confusion the series has to guard against continually: the assumption that "finding" a neural correlate of a mental state is the same as identifying the witness that mental states appear to. Dṛg-dṛśya-viveka draws that line sharply in the Vedāntic system itself — the default-mode network, an insula-mediated interoceptive signal, a measured EEG rhythm are, on Śaṅkara's own terms, dṛśya through and through, no matter how subtle. They are candidates for correlating with the <em>kośas</em> (below), never with the sākṣī. Any worked example in this series that appears to correlate a nāma naming pure awareness with a brain state will therefore end its lens-panel with an explicit divergence note, not a forced convergence — this is not a failure of the method, it is the method working as designed.</p>
+
+<h3 class="sub-h">1.3 — Pañcakośa-Viveka: The Five Sheaths as the Series' Real Working Layer</h3>
+<p>The third discrimination — verses 156–216 — is the one that does almost all of the practical work in Modules II through VI, because it is the one layer of Śaṅkara's system that is explicitly built in graded correspondence to embodiment. The five kośas are not five separate objects; they are five successively subtler descriptions of the same conditioned person, and each admits a different kind of correlate:</p>
+
+<div class="viveka-ladder">
+  <div class="ladder-rung">
+    <span class="ladder-num">१</span>
+    <span class="ladder-label"><span class="rl-skt">अन्नमयकोश</span>Annamaya-kośa — the food-sheath</span>
+    <span class="ladder-rejects">gross anatomical body</span>
+  </div>
+  <div class="ladder-rung">
+    <span class="ladder-num">२</span>
+    <span class="ladder-label"><span class="rl-skt">प्राणमयकोश</span>Prāṇamaya-kośa — the vital-breath sheath</span>
+    <span class="ladder-rejects">autonomic / respiratory / circulatory function</span>
+  </div>
+  <div class="ladder-rung">
+    <span class="ladder-num">३</span>
+    <span class="ladder-label"><span class="rl-skt">मनोमयकोश</span>Manomaya-kośa — the mind-sheath</span>
+    <span class="ladder-rejects">affect, sensory integration, limbic function</span>
+  </div>
+  <div class="ladder-rung">
+    <span class="ladder-num">४</span>
+    <span class="ladder-label"><span class="rl-skt">विज्ञानमयकोश</span>Vijñānamaya-kośa — the intellect-sheath</span>
+    <span class="ladder-rejects">discriminative cognition, executive / prefrontal function</span>
+  </div>
+  <div class="ladder-rung">
+    <span class="ladder-num">५</span>
+    <span class="ladder-label"><span class="rl-skt">आनन्दमयकोश</span>Ānandamaya-kośa — the bliss-sheath</span>
+    <span class="ladder-rejects">deep-sleep / non-dual reports; no established neural correlate</span>
+  </div>
+</div>
+
+<p>The pañcakośa scheme gives the tri-lens template its actual working taxonomy: a nāma whose Vedāntic sense sits at the annamaya or prāṇamaya level is a legitimate candidate for a strong physiological correlate; a nāma sitting at the manomaya or vijñānamaya level is a legitimate candidate for a neuroscientific correlate, held more provisionally; a nāma whose Vedāntic sense is explicitly ānandamaya or beyond (pointing toward the sākṣī itself) is classified from the outset as having no expected correlate, and any resemblance found is treated as coincidental unless independently justified. This is what "objective front" means in practice for this series — not skepticism toward the tradition, but taking the tradition's own internal distinctions seriously enough to let them constrain which comparisons are even meaningful to attempt.</p>
+
+</section>
+
+<hr class="ornament">
+
+<section class="chapter" id="three-vivekas">
+<div class="chapter-mark"><span class="chapter-eyebrow">Applied Note</span></div>
+<h2 class="chapter-title">Why This Order Matters for a Nāma-Valī Specifically</h2>
+<p>A sahasranāma is structurally unlike the Vivekacūḍāmaṇi's continuous argument: it is a list, and every item on the list is grammatically identical — a feminine epithet in apposition to Devī. That flat grammar is exactly what makes it easy to read every name as making the same kind of claim, at the same kośa-depth, which is false. <span class="skt">सहस्रारसंस्थिता</span> Sahasrārasaṁsthitā, "she who dwells in the thousand-petaled lotus," makes a claim that Śaṅkara's own scheme would place near the vijñānamaya/ānandamaya boundary. <span class="skt">रक्तवर्णा</span> Raktavarṇā, "she of the red color," in a hemodynamic or menstrual-physiological reading, sits squarely at the annamaya level. Reading both names with the same lens-weighting is a category error the pañcakośa ladder exists to prevent. Modules II onward tag every nāma with a kośa-depth estimate before running the four-lens template, precisely so that the neuroscience lens is not asked to do work it has no business doing, and so that the Vedāntic lens is not flattened into a physiology gloss where the text itself is pointing past the body altogether.</p>
+</section>
+
+<hr class="ornament">
+
+<section class="chapter" id="body-atlas">
+<div class="chapter-mark"><span class="chapter-num">२</span><span class="chapter-eyebrow">Part Two</span></div>
+<h2 class="chapter-title">Saundaryalaharī as Body-Atlas<span class="dn">सौन्दर्यलहरी शरीरमानचित्रम्</span></h2>
+<p class="chapter-lede">If the Vivekacūḍāmaṇi supplies the epistemic discipline, the Saundaryalaharī supplies the actual map — a 100-verse text that is, on its second half especially, a working diagram of the body as the site of realization, verse by verse.</p>
+
+<p class="lead-para">The Saundaryalaharī's authorship is traditionally ascribed to Śaṅkara, though the manuscript tradition transmits it as two originally distinct compositions stitched into one hundred verses: the first 41, called the <span class="term">Ānandalaharī</span> ("Wave of Bliss"), are cosmological and theological — establishing Śiva-Śakti relation, the nature of the śrīcakra as a cosmic diagram, and the grounds of Devī's supremacy. Verses 42 through 100, retaining the title <span class="term">Saundaryalaharī</span> proper ("Wave of Beauty"), turn to a sustained, verse-by-verse description of Devī's body — and it is this second section that functions as this series' physiological and neurological Rosetta Stone, because the text itself moves systematically from crown to foot, describing each bodily region in a language that is simultaneously aesthetic, anatomical, and yogic.</p>
+
+<h3 class="sub-h">2.1 — The Structural Break at Verse 41/42</h3>
+<p>The break is not arbitrary manuscript division; it is thematic. Verses 1–41 speak <em>about</em> Śakti in relation to Śiva and the universe — her supremacy, the śrīcakra as maṇḍala, the nine āvaraṇas (enclosures) of the cakra correlated to the nine-fold classification of her attendant śaktis. Verse 8's famous declaration that Śiva is only capable of creation "when united with Śakti" (<span class="iast">śivaḥ śaktyā yukto yadi bhavati śaktaḥ prabhavitum</span>) is cosmological grammar, not somatic description. From verse 42 onward, the grammar changes: each verse takes one bodily region — the feet, the thighs, the waist, the breasts, the neck, the face, the eyes, the brow, the crown — and describes it in a register that yogic commentators (notably Lakṣmīdhara's commentary) read as simultaneously literal anatomical praise-poetry and cakra-by-cakra kuṇḍalinī ascent.</p>
+
+<h3 class="sub-h">2.2 — The Nine-Cakra Correlation Used in This Series</h3>
+<p>Commentarial tradition on the Saundaryalaharī (chiefly Lakṣmīdhara, and the tantric sub-commentaries that follow him) maps specific verse-clusters onto the cakra system. This series adopts that mapping as its working table for Modules II–VII, extending the standard six/seven-cakra scheme by including the ājñā-adjacent soma-cakra and the mūrdhan/dvādaśānta above sahasrāra, since several Saundaryalaharī verses (81–92 especially) require that extension to be read coherently:</p>
+
+<div class="cakra-grid">
+  <div class="cakra-row header-row">
+    <div>Cakra</div><div>SL Verses (typical)</div><div>Physiological Reading</div><div>Neuroscience Reading</div>
+  </div>
+  <div class="cakra-row">
+    <div class="cakra-name">मूलाधार<span class="cn-verses">SL 92–94</span></div>
+    <div class="cakra-cell">Base of spine / feet — the text's closing verses on Devī's feet and their salvific touch</div>
+    <div class="cakra-cell">Pelvic floor, sacral plexus, proprioceptive grounding via lower-limb mechanoreceptors</div>
+    <div class="cakra-cell">Somatosensory homunculus foot representation; vestibular-proprioceptive integration in posterior parietal cortex</div>
+  </div>
+  <div class="cakra-row">
+    <div class="cakra-name">स्वाधिष्ठान<span class="cn-verses">SL 78–80</span></div>
+    <div class="cakra-cell">Hip/thigh verses (<span class="iast">ūru</span>, <span class="iast">nitamba</span>)</div>
+    <div class="cakra-cell">Sacral plexus, reproductive/urinary visceral innervation</div>
+    <div class="cakra-cell">Insular interoceptive mapping of pelvic viscera; limbic reward circuitry (nucleus accumbens) implicated in aesthetic verses</div>
+  </div>
+  <div class="cakra-row">
+    <div class="cakra-name">मणिपूर<span class="cn-verses">SL 76–77</span></div>
+    <div class="cakra-cell">Waist/navel (<span class="iast">madhya</span>, the famous "waist thin enough to be grasped in a fist")</div>
+    <div class="cakra-cell">Solar plexus, celiac ganglion, digestive/metabolic core</div>
+    <div class="cakra-cell">Interoceptive gut-brain signaling via vagal afferents to nucleus tractus solitarius</div>
+  </div>
+  <div class="cakra-row">
+    <div class="cakra-name">अनाहत<span class="cn-verses">SL 72–75</span></div>
+    <div class="cakra-cell">Breasts / heart region (<span class="iast">kuca</span>, <span class="iast">hṛdaya</span>)</div>
+    <div class="cakra-cell">Cardiac plexus, thoracic autonomic ganglia, mammary-endocrine (prolactin/oxytocin) axis</div>
+    <div class="cakra-cell">Cardiac interoception correlated with anterior insula and anterior cingulate activity; oxytocin-mediated affiliative circuits</div>
+  </div>
+  <div class="cakra-row">
+    <div class="cakra-name">विशुद्ध<span class="cn-verses">SL 68–71</span></div>
+    <div class="cakra-cell">Neck / throat (<span class="iast">kaṇṭha</span>, <span class="iast">grīvā</span>)</div>
+    <div class="cakra-cell">Thyroid, laryngeal and pharyngeal plexus, vagal cardiac branches</div>
+    <div class="cakra-cell">Laryngeal motor cortex, speech-production network (Broca's area, arcuate fasciculus) — the natural point of contact with Bhartṛhari's vāk theory, taken up in Module IV</div>
+  </div>
+  <div class="cakra-row">
+    <div class="cakra-name">आज्ञा<span class="cn-verses">SL 43, 50</span></div>
+    <div class="cakra-cell">Brow / space between eyebrows (<span class="iast">bhrūmadhya</span>)</div>
+    <div class="cakra-cell">Pineal-adjacent region; classical association with the "third eye"</div>
+    <div class="cakra-cell">Precuneus and medial prefrontal midline activity implicated in self-referential and meditative states; pineal melatonin regulation of circadian/attentional states</div>
+  </div>
+  <div class="cakra-row">
+    <div class="cakra-name">सहस्रार<span class="cn-verses">SL 8–9, 32</span></div>
+    <div class="cakra-cell">Crown</div>
+    <div class="cakra-cell">No discrete gross-anatomical structure; classical texts treat this as the site of kuṇḍalinī-Śiva union rather than an organ</div>
+    <div class="cakra-cell">Tentative and contested correlation with large-scale cortical synchrony (gamma-band) reported in advanced meditators; treated in this series as suggestive, not established</div>
+  </div>
+</div>
+
+<div class="callout warn">
+<span class="callout-tag">Method Rule 2 — On the Sahasrāra Row Specifically</span>
+The sahasrāra correlate is the clearest instance in the entire cakra table of a claim that the pañcakośa-viveka (§1.3) flags as ānandamaya-level. This series will not force a tidy neural correlate onto it. Where the neuroscience literature offers gamma-synchrony findings from meditation studies (e.g. in advanced Buddhist and Himalayan yogic practitioners), those findings are reported honestly as provisional and methodologically contested — small samples, self-selected expert populations, and correlational rather than causal designs — and the convergence note for any sahasrāra-linked nāma will typically read <em>partial</em> or <em>divergent</em>, not <em>converge</em>.
+</div>
+
+<h3 class="sub-h">2.3 — Why the Ānandalaharī Half (1–41) Still Matters to the Method</h3>
+<p>Verses 1–41 are not simply skipped by this series' physiological reading; they set the constraint that the body-atlas half must be read within. Verse 8's Śiva-Śakti interdependence claim — that consciousness (Śiva) without dynamic power (Śakti) cannot even move — is the cosmological premise that licenses reading the goddess's body, in verses 42–100, as reality's dynamic principle taking bodily form rather than as mere physical description. This is the reason the Vedāntic lens in every worked example below is never simply "what a Vedāntin might say about anatomy" but specifically what Śakti-as-dynamism, constrained by the Śiva-Śakti relation established in the Ānandalaharī, is doing at that particular bodily site.</p>
+
+</section>
+
+<hr class="ornament">
+
+<section class="chapter" id="lens-template">
+<div class="chapter-mark"><span class="chapter-num">३</span><span class="chapter-eyebrow">Part Three</span></div>
+<h2 class="chapter-title">The Tri-Lens Template, Defined Precisely<span class="dn">त्रिदृष्टि-पद्धतिः</span></h2>
+<p class="chapter-lede">Every entry in Modules II through VI runs through the same four fixed passes. This section defines each pass with the rigor needed to apply it 2,000+ times without drift.</p>
+
+<h4 class="sub-sub-h">Pass 1 — Vedāntic / Śāṅkara Reading</h4>
+<p>States what the nāma or verse asserts about consciousness, using Śaṅkara's own vocabulary wherever the text permits a direct citation (Vivekacūḍāmaṇi verse or Saundaryalaharī verse), and assigns a kośa-depth (§1.3) to the assertion. This pass ends with an explicit kośa-tag: <span class="term">annamaya</span>, <span class="term">prāṇamaya</span>, <span class="term">manomaya</span>, <span class="term">vijñānamaya</span>, or <span class="term">ānandamaya/beyond</span>.</p>
+
+<h4 class="sub-sub-h">Pass 2 — Physiological / Anatomical Reading</h4>
+<p>Applies only where the kośa-tag is annamaya or prāṇamaya, or where the nāma names a literal body part, secretion, or organ. States the anatomical structure or system, cites standard physiological function, and — critically — does not import Vedāntic significance into the anatomy. The anatomy is described the way a physiology textbook would describe it.</p>
+
+<h4 class="sub-sub-h">Pass 3 — Neuroscientific Reading</h4>
+<p>Applies most naturally where the kośa-tag is manomaya or vijñānamaya. Cites an established neuroscience finding or model where one genuinely exists (interoception research, default-mode network studies, neuroendocrine axes, laterality findings), and is explicit — using a visible flag — whenever the "correlate" being offered is a speculative bridge rather than a citation to settled science.</p>
+
+<h4 class="sub-sub-h">Pass 4 — Convergence / Divergence Note</h4>
+<p>A short closing judgment, tagged one of three ways: <strong>Converge</strong> (the three passes are describing the same underlying phenomenon from three vocabularies), <strong>Partial</strong> (some genuine overlap, but at least one pass is making a claim the others don't touch), or <strong>Diverge</strong> (the three passes are simply not about the same thing, and forcing agreement would be dishonest). Diverge is not a failure state for this series — it is frequently the correct and most intellectually honest outcome, especially for ānandamaya-tagged entries.</p>
+
+</section>
+
+<hr class="ornament">
+
+<section class="chapter" id="worked-examples">
+<div class="chapter-mark"><span class="chapter-eyebrow">Demonstration</span></div>
+<h2 class="chapter-title">Three Worked Examples</h2>
+<p class="chapter-lede">These three entries are drawn ahead of their proper place in Modules II, IV, and V respectively, to demonstrate the template running at three different kośa-depths before the full run begins.</p>
+
+<div class="lens-widget">
+  <div class="lens-header">
+    <div class="lw-title">Worked Example A — Prāṇamaya-Level Entry</div>
+    <div class="lw-sub">कुण्डलिनी — Kuṇḍalinī (Lalitā Sahasranāma, nāma 315)</div>
+  </div>
+  <div class="lens-tabs">
+    <div class="lens-tab active" data-tab="a1">Vedāntic</div>
+    <div class="lens-tab" data-tab="a2">Physiological</div>
+    <div class="lens-tab" data-tab="a3">Neuroscientific</div>
+  </div>
+  <div class="lens-panels">
+    <div class="lens-panel active" id="a1">
+      <div class="lp-label">Pass 1 · Kośa-tag: prāṇamaya (bridging toward vijñānamaya)</div>
+      <p>The name identifies Devī with the coiled power classically described as resting dormant at the mūlādhāra and, upon awakening, ascending through the suṣumnā to unite with Śiva at the sahasrāra. Within Śaṅkara's own vocabulary this is best located as a description of śakti operating at the prāṇamaya-kośa — the sheath of vital breath and subtle energetic movement — with its terminus (union at the crown) pointing toward the vijñānamaya/ānandamaya boundary discussed in §1.3. The Vivekacūḍāmaṇi does not use kuṇḍalinī terminology directly, but its treatment of prāṇa as a conditioned, moving principle distinct from the sākṣī (verses 96–108) supplies the discriminative frame: kuṇḍalinī's ascent is dṛśya, an event within the conditioned apparatus, however subtle — not an event happening to the witness itself.</p>
+    </div>
+    <div class="lens-panel" id="a2">
+      <div class="lp-label">Pass 2 · Physiological reading</div>
+      <p>No discrete anatomical structure corresponds to a coiled energy at the base of the spine; there is no dissected nerve bundle answering to this description. What can be stated physiologically is more modest: the sacral and coccygeal plexuses, along with the pelvic floor's dense proprioceptive and autonomic innervation, are the closest literal anatomical referents for "mūlādhāra," and ascending autonomic signaling along the spinal sympathetic chain toward higher thoracic and cervical ganglia is the closest literal referent for an "ascent" of subtle energy. This should be stated as a loose structural analogy, not an anatomical identity.</p>
+    </div>
+    <div class="lens-panel" id="a3">
+      <div class="lp-label">Pass 3 · Neuroscientific reading — flagged speculative</div>
+      <p>Claims that kuṇḍalinī awakening corresponds to a specific, measurable neural event are not supported by controlled neuroscience research at this time. What exists are self-report studies of "kuṇḍalinī experiences" correlating with unusual autonomic arousal patterns and, in a small number of EEG studies on long-term meditators, altered alpha/theta patterns during intensive prāṇāyāma — findings that are suggestive but drawn from small, self-selected samples without adequate controls. This pass is explicitly flagged: any language of a kuṇḍalinī "neural correlate" beyond this should be read as hypothesis, not finding.</p>
+    </div>
+  </div>
+  <div class="convergence-note">
+    <span class="cn-tag partial">Partial</span>
+    The Vedāntic account and the autonomic-ascent physiological reading share genuine structural overlap — both describe a graded, ascending activation of a conditioned energetic system. The neuroscience pass, however, cannot currently supply anything beyond suggestive, methodologically weak correlational data, so full convergence is not claimed. This entry is revisited with fuller citation in Module II.
+  </div>
+</div>
+
+<div class="lens-widget">
+  <div class="lens-header">
+    <div class="lw-title">Worked Example B — Annamaya-Level Entry</div>
+    <div class="lw-sub">रक्तवर्णा — Raktavarṇā, "she of the red hue" (Devī Māhātmyam epithet cluster)</div>
+  </div>
+  <div class="lens-tabs">
+    <div class="lens-tab active" data-tab="b1">Vedāntic</div>
+    <div class="lens-tab" data-tab="b2">Physiological</div>
+    <div class="lens-tab" data-tab="b3">Neuroscientific</div>
+  </div>
+  <div class="lens-panels">
+    <div class="lens-panel active" id="b1">
+      <div class="lp-label">Pass 1 · Kośa-tag: annamaya</div>
+      <p>Red as Devī's characteristic hue in the Māhātmyam's battle-hymns functions primarily as a rajas-guṇa marker — activity, heat, and the dynamism of Śakti as world-process, consistent with the Ānandalaharī's premise (§2.3) that Śakti is the active principle without which even Śiva is inert. This is a low-kośa-depth claim; Śaṅkara's system does not require reading it past the gross, embodied register.</p>
+    </div>
+    <div class="lens-panel" id="b2">
+      <div class="lp-label">Pass 2 · Physiological reading</div>
+      <p>Red as bodily color has a direct, unambiguous physiological referent: oxygenated hemoglobin, vascular flushing under sympathetic arousal, and — in the specific ritual contexts where red is tied to menstrual and reproductive symbolism throughout Śākta literature — the uterine/menstrual physiology that much of Tantric literature explicitly links to this color-epithet cluster.</p>
+    </div>
+    <div class="lens-panel" id="b3">
+      <div class="lp-label">Pass 3 · Neuroscientific reading</div>
+      <p>Color-affect research gives a genuinely established, if modest, correlate here: red hues reliably produce measurable increases in sympathetic arousal markers and are processed with distinct amygdala engagement compared to cooler hues in multiple controlled studies. This is one of the stronger, better-evidenced neuroscience passes in the entire series precisely because the underlying claim is low-kośa-depth and concrete.</p>
+    </div>
+  </div>
+  <div class="convergence-note">
+    <span class="cn-tag converge">Converge</span>
+    All three passes are describing the same phenomenon — heightened physiological/psychological arousal — through three vocabularies that genuinely overlap at this depth. This is the clearest converge-tagged case in the framework module, offered deliberately as a contrast to Example A.
+  </div>
+</div>
+
+<div class="lens-widget">
+  <div class="lens-header">
+    <div class="lw-title">Worked Example C — Ānandamaya/Beyond-Level Entry</div>
+    <div class="lw-sub">सच्चिदानन्दरूपिणी — Saccidānandarūpiṇī, "she whose very form is being-consciousness-bliss" (Lalitā Sahasranāma, nāma 999)</div>
+  </div>
+  <div class="lens-tabs">
+    <div class="lens-tab active" data-tab="c1">Vedāntic</div>
+    <div class="lens-tab" data-tab="c2">Physiological</div>
+    <div class="lens-tab" data-tab="c3">Neuroscientific</div>
+  </div>
+  <div class="lens-panels">
+    <div class="lens-panel active" id="c1">
+      <div class="lp-label">Pass 1 · Kośa-tag: beyond ānandamaya — vastu-level, per Method Rule 1</div>
+      <p>This name makes exactly the vastu-level claim Method Rule 1 (§1.1) identifies as categorically outside kośa-correlation: it identifies Devī's very nature (<span class="iast">rūpa</span> used paradoxically, since sat-cit-ānanda is classically formless) with the unconditioned substrate itself, the nitya vastu the entire Vivekacūḍāmaṇi is written to point toward. Śaṅkara's own dṛg-dṛśya-viveka (§1.2) is explicit that the sākṣī cannot become an object of any of the three lower kośa-level inquiries.</p>
+    </div>
+    <div class="lens-panel" id="c2">
+      <div class="lp-label">Pass 2 · Physiological reading</div>
+      <p>No anatomical correlate is proposed. Per Method Rule 1, this pass is intentionally left thin rather than padded with a strained organ-mapping.</p>
+    </div>
+    <div class="lens-panel" id="c3">
+      <div class="lp-label">Pass 3 · Neuroscientific reading</div>
+      <p>Contemplative neuroscience has studied reports of non-dual or "pure awareness" states (work on Yoga Nidrā and turīya-adjacent states in long-term meditators shows reduced default-mode network activity and altered thalamocortical connectivity), but these studies measure a reported experiential state and its neural accompaniment — not the sākṣī itself, which by definition cannot be an object of measurement. Citing these findings as though they had located "consciousness itself" would be exactly the dṛg-dṛśya conflation §1.2 warns against.</p>
+    </div>
+  </div>
+  <div class="convergence-note">
+    <span class="cn-tag diverge">Diverge</span>
+    This is the deliberately placed diverge-tagged example. The Vedāntic pass is not making a claim that anatomy or neuroscience can, even in principle, adjudicate — and the honest convergence note says so rather than manufacturing agreement. Roughly a tenth of the Sahasranāma's 1000 names are expected to receive this tag; Module VII's synthesis chapter tallies the actual distribution.
+  </div>
+</div>
+
+</section>
+
+<hr class="ornament">
+
+<section class="chapter" id="convergence-criteria">
+<div class="chapter-mark"><span class="chapter-num">४</span><span class="chapter-eyebrow">Part Four</span></div>
+<h2 class="chapter-title">Convergence Criteria, Stated as Falsifiable Rules</h2>
+<p class="chapter-lede">To keep 2,000+ entries from drifting toward confirmation bias in either direction — over-validating tradition or over-debunking it — this series commits in advance to the following decision rules.</p>
+
+<h4 class="sub-sub-h">Rule for tagging Converge</h4>
+<p>A Converge tag requires (a) matching kośa-depth across all three passes, (b) an anatomical or neuroscientific finding that is independently replicated in the literature, not a single study, and (c) the underlying phenomenon named by all three passes being the same event under different description, not merely a metaphorical resemblance.</p>
+
+<h4 class="sub-sub-h">Rule for tagging Partial</h4>
+<p>Applied whenever two of the three passes meet the Converge bar but the third introduces a claim — usually the neuroscience pass introducing either a genuinely novel finding the Vedāntic text does not anticipate, or a caveated/contested finding — that cannot yet be folded into full agreement.</p>
+
+<h4 class="sub-sub-h">Rule for tagging Diverge</h4>
+<p>Applied whenever the Vedāntic pass is vastu-level (per Method Rule 1) or whenever the physiological/neuroscientific passes would require speculative bridging so extensive that stating it as a finding would misrepresent the state of the evidence. Diverge is reported neutrally, without treating it as a defeat for either the traditional or the scientific side — it simply means the three lenses were never asking the same question.</p>
+
+<div class="margin-note">This tally becomes empirically meaningful only once run across all ~2,000 units in Modules II–VI. Module VII's synthesis chapter reports the actual distribution of Converge / Partial / Diverge tags across the Sahasranāma, Triśatī, and Saptaśatī, and asks what that distribution itself indicates about where Śākta literature is making testable claims and where it is deliberately pointing past testability altogether.</div>
+
+</section>
+
+</main>
+
+<footer>
+  <span class="fdn">इति प्रथमं प्रकरणम्</span>
+  Tridhā Darpaṇam · Module I of VII · shastrasextvakfive.culturalmusings.com · Cultural Musings Research
+</footer>
+
+<script>
+document.querySelectorAll('.lens-widget').forEach(widget=>{
+  const tabs = widget.querySelectorAll('.lens-tab');
+  const panels = widget.querySelectorAll('.lens-panel');
+  tabs.forEach(tab=>{
+    tab.addEventListener('click', ()=>{
+      const target = tab.getAttribute('data-tab');
+      tabs.forEach(t=>t.classList.remove('active'));
+      panels.forEach(p=>p.classList.remove('active'));
+      tab.classList.add('active');
+      widget.querySelector('#'+target).classList.add('active');
+    });
+  });
+});
+</script>
+<section class="masthead-strip" id="part6-abstract">
+  <div class="devanagari-strip">कुण्डलिनी वाक् आरोहणम्</div>
+  <p class="section-kicker">Series A Extended · Part Six</p>
+  <h1 class="section-title">Kuṇḍalinī: Vāk as Ascent</h1>
+  <p class="section-subtitle">
+    From the unstruck silence of Parā to the articulated word of Vaikharī —
+    and the ascent of Kuṇḍalinī as the same movement read along the spine
+    rather than along the breath.
+  </p>
+</section>
+
+<section class="section-block" id="abstract">
+  <h2>Abstract</h2>
+  <p>
+    Parts Two through Five of this series established Śabdabrahman as the
+    ground of manifestation and Mātṛkā Śāstra as the mechanism by which
+    undifferentiated sound differentiates into the fifty-one root
+    phonemes. Part Six asks a narrower question those parts left open:
+    if sound descends from silence into speech, what is the discipline by
+    which a practitioner reverses that descent — and what, if anything,
+    does the body register when the reversal is undertaken deliberately
+    rather than merely theorized? The answer this Part develops is that
+    the four traditionally named levels of Vāk — Parā, Paśyantī, Madhyamā,
+    Vaikharī — are not only a model of how speech comes to be spoken, but
+    a map of an ascent the Tantric traditions locate in the physical
+    body and call Kuṇḍalinī. The two are treated here as one process
+    described in two vocabularies: the grammarian's account of speech
+    unfolding outward from Parā, and the Tantric practitioner's account
+    of Śakti coiled at the base of the spine uncoiling upward through
+    the same four stages in reverse. Where the tradition's claims
+    intersect with autonomic physiology, fMRI neuroimaging, and the
+    clinical literature distinguishing spiritually transformative
+    experience from psychiatric crisis, this Part states plainly which
+    claims are doctrinal and which are empirically tested — a
+    distinction this series has held since Part One and does not
+    relax here.
+  </p>
+</section>
+
+<section class="section-block" id="preface">
+  <h2>Preface</h2>
+  <p>
+    A note on why this Part exists where it does in the series. Part
+    Three established Tantra's operative grammar — that reality is
+    experienced through a graded descent from Śiva-Śakti's unity into
+    the thirty-six Tattvas of manifest experience. Part Five, on the
+    yogic technology of speech, established prāṇa and citta as the two
+    substrates through which Vāk moves before it is voiced. Kuṇḍalinī is
+    where those two prior accounts converge: it is Tantra's Tattva
+    doctrine and Yoga Śāstra's account of prāṇa-citta, applied
+    specifically to the question of ascent. A reader arriving at Part
+    Six without the two preceding frameworks would find the Kuṇḍalinī
+    material intelligible only as isolated physiological claims about
+    the spine and the nervous system; read against Parts Three and Five,
+    it is instead the completion of an argument already two-thirds
+    built.
+  </p>
+</section>
+
+<section class="section-block" id="subjective-objective">
+  <h2>Subjective and Objective Understanding</h2>
+  <p>
+    This Part maintains, more explicitly than prior sections, a running
+    distinction between two registers of claim, tagged inline throughout:
+  </p>
+  <div class="claim-tag-key">
+    <span class="claim-tag doctrinal">Doctrinal</span>
+    <span class="claim-tag-desc">a traditional claim, stated in its own terms, not currently testable by instrumentation — e.g., that a specific Tattva "unwinds" at a specific cakra.</span>
+    <span class="claim-tag empirical">Empirical</span>
+    <span class="claim-tag-desc">a claim with published, peer-reviewed physiological or clinical support — e.g., vagal tone shifts under sustained pranayama, or fMRI-measured hippocampal volume change after Kuṇḍalinī Yoga practice.</span>
+  </div>
+  <p>
+    The subjective register is the practitioner's own account — inner
+    sound (nāda), heat, light, tremor (kriyā) — reported consistently
+    across centuries of first-person testimony but not independently
+    verifiable by a third party. The objective register is what can be
+    measured from outside the practitioner: heart-rate variability,
+    cortical connectivity, hormonal markers. This Part keeps both
+    registers on the page without collapsing one into the other. A
+    kriyā is not "explained away" by naming its likely autonomic
+    correlate, nor is the autonomic correlate demoted to metaphor
+    because a Tantric text also describes it in cosmological language.
+    They are two descriptions of one event, given in two vocabularies
+    that arose independently of each other.
+  </p>
+</section>
+
+<section class="section-block" id="four-levels">
+  <h2>The Four Levels of Speech: Consciousness from Silence to Sound</h2>
+  <p>
+    The scheme is stated earliest in the Ṛgveda's Asya Vāmīya hymn, which
+    claims speech is "measured out in four stages," of which the wise
+    know all four but ordinary speakers voice only the last. <sup>[1]</sup>
+  </p>
+
+  <div class="sloka-block">
+    <p class="sloka-dev">चत्वारि वाक्परिमिता पदानि तानि विदुर्ब्राह्मणा ये मनीषिणः । गुहा त्रीणि निहिता नेङ्गयन्ति तुरीयं वाचो मनुष्या वदन्ति ॥</p>
+    <p class="sloka-translit">catvāri vāk parimitā padāni tāni vidur brāhmaṇā ye manīṣiṇaḥ | guhā trīṇi nihitā neṅgayanti turīyaṃ vāco manuṣyā vadanti</p>
+    <p class="sloka-trans">"Speech is measured out in four stages; these the wise know. Three, hidden in secret, do not move; the fourth is what people ordinarily speak."</p>
+    <p class="sloka-source">Ṛgveda 1.164.45</p>
+  </div>
+
+  <p>
+    Bhartṛhari's Vākyapadīya names the four directly and gives Parā a
+    technical definition later Tantric authors adopt without alteration:
+    not "unmanifest" in the sense of absent, but unmanifest in the sense
+    of undifferentiated — Śabdabrahman prior to any distinction between
+    one word and another. <sup>[2]</sup>
+  </p>
+
+  <table class="glossary-table">
+    <tr><th>Level</th><th>Devanāgarī</th><th>Character</th><th>Kuṇḍalinī Correlate</th></tr>
+    <tr>
+      <td>Parā</td><td>परा</td>
+      <td>The supreme, unmanifest energy — potential prior to any
+        distinction of meaning. Not silence as absence, but silence as
+        undifferentiated fullness.</td>
+      <td>Śakti coiled at Mūlādhāra, prior to any awakening — potential
+        energy, not yet current.</td>
+    </tr>
+    <tr>
+      <td>Paśyantī</td><td>पश्यन्ती</td>
+      <td>"Seeing" speech — a unitary, intuitive flash of meaning, whole
+        and undivided, prior to grammar or sequence.</td>
+      <td>The initial rising of Śakti past Mūlādhāra into Svādhiṣṭhāna
+        and Maṇipūra — felt as a single ascending current, not yet
+        differentiated into thought.</td>
+    </tr>
+    <tr>
+      <td>Madhyamā</td><td>मध्यमा</td>
+      <td>The intermediate intellectual level — inner dialogue,
+        grammatically structured but not yet voiced.</td>
+      <td>Śakti's ascent through Anāhata and Viśuddha — where current
+        becomes differentiated into felt inner experience: thought,
+        image, and the first articulate impulse.</td>
+    </tr>
+    <tr>
+      <td>Vaikharī</td><td>वैखरी</td>
+      <td>The gross, articulated, external speech — the only level an
+        outside listener ever hears.</td>
+      <td>Śakti's arrival at Ājñā and Sahasrāra, or its outward
+        expression through voice, gesture, and act once the ascent
+        completes or is consciously directed outward again.</td>
+    </tr>
+  </table>
+
+  <p>
+    The correlate column above is stated as doctrinal, not empirical: no
+    instrument locates Śakti as a physical current at a spinal point.
+    What is defensible as more than metaphor is the structural parallel
+    itself — both schemes describe a single potential differentiating,
+    in fixed stages, from undivided unity toward gross multiplicity, and
+    the Tantric authors who first mapped Kuṇḍalinī onto the cakras were,
+    demonstrably, working from grammarians already using this exact
+    four-stage vocabulary for speech. <sup>[3]</sup> The mapping is not
+    an imposition by later syncretists; it is continuous with the
+    source tradition's own categories.
+  </p>
+</section>
+
+<section class="section-block" id="tantric-cosmology">
+  <h2>Tantric Cosmology: The 36 Tattvas and the Ascent of Vāk</h2>
+  <p>
+    Kashmir Śaivism's thirty-six Tattva scheme extends the Sāṅkhya
+    system's twenty-five principles (Prakṛti and its evolutes, up to and
+    including the five elements) by adding eleven higher principles
+    above Puruṣa, accounting for the descent from Paramaśiva into
+    limited individual experience. <sup>[4]</sup> The ascent of Vāk —
+    and of Kuṇḍalinī — is this same ladder climbed in the opposite
+    direction: what descended into contraction is, in sādhanā,
+    deliberately retraced back toward its source.
+  </p>
+
+  <table class="tattva-table">
+    <tr><th>Tattva Group</th><th>Tattvas (36→1)</th><th>Vāk Level</th><th>Cakra Correlate (doctrinal)</th></tr>
+    <tr>
+      <td>Śuddha (Pure) Tattvas</td>
+      <td>Śiva, Śakti</td>
+      <td>Parā</td>
+      <td>Sahasrāra / beyond form — the source the ascent moves toward, not a location it passes through</td>
+    </tr>
+    <tr>
+      <td>Śuddha-Aśuddha (Pure-Impure) Tattvas</td>
+      <td>Sadāśiva, Īśvara, Śuddhavidyā, then Māyā and its five Kañcukas (Kalā, Vidyā, Rāga, Kāla, Niyati)</td>
+      <td>Paśyantī → early Madhyamā</td>
+      <td>Ājñā — the point at which undivided awareness first accepts the limitations (Kañcukas) that make individual experience possible</td>
+    </tr>
+    <tr>
+      <td>Aśuddha (Impure) Tattvas — Puruṣa through Prakṛti</td>
+      <td>Puruṣa, Prakṛti, Buddhi, Ahaṅkāra, Manas</td>
+      <td>Madhyamā</td>
+      <td>Viśuddha, Anāhata — where thought and the sense of a separate self (Ahaṅkāra) are organized before any word is voiced</td>
+    </tr>
+    <tr>
+      <td>Aśuddha Tattvas — Sense and Action Faculties</td>
+      <td>five Jñānendriyas, five Karmendriyas</td>
+      <td>Vaikharī (approach)</td>
+      <td>Maṇipūra, Svādhiṣṭhāna — the faculties of perception and action that carry inner content toward outward expression</td>
+    </tr>
+    <tr>
+      <td>Aśuddha Tattvas — Gross Elements</td>
+      <td>five Tanmātras, five Mahābhūtas (Ākāśa, Vāyu, Agni, Ap, Pṛthivī)</td>
+      <td>Vaikharī</td>
+      <td>Mūlādhāra — the grossest, most differentiated end of the descent; the base at which Kuṇḍalinī is said to lie coiled</td>
+    </tr>
+  </table>
+
+  <p>
+    Two metaphors recur across the Śaiva sources for this relationship
+    and are worth unpacking rather than merely naming. The first is the
+    spider and its web: the spider (Śiva-consciousness) emits the web
+    (the thirty-six Tattvas) entirely from its own substance, and can, at
+    will, draw the web back into itself without loss — manifestation is
+    not a diminishment of the source, the way a spider is not depleted
+    by producing silk. <sup>[4]</sup> The second is the seed and the
+    tree: the thirty-six-Tattva universe is present in seed-form within
+    Parā the way the entire tree is present, unexpressed, within a
+    single seed — the ascent of Kuṇḍalinī is not the construction of
+    something new at each cakra, but the progressive revealing of what
+    was already latent in the seed from the first stage. Both metaphors
+    make the same doctrinal point from different angles: the ascent is
+    a return to an already-complete source, not an accumulation of
+    something the practitioner previously lacked.
+  </p>
+</section>
+
+<section class="section-block" id="ans-vagal">
+  <h2>Neurological and Physiological Correlates</h2>
+  <h3>The Autonomic Nervous System and Vagal Activation <span class="claim-tag empirical">Empirical</span></h3>
+  <p>
+    A recurring model in the contemporary literature identifies reported
+    Kuṇḍalinī phenomena — waves of heat, involuntary movement, altered
+    breath rhythm — with heightened but shifting autonomic arousal, most
+    specifically with vagal nerve activity. <sup>[5]</sup> The vagus
+    nerve, as the principal channel of the parasympathetic system,
+    governs the very organs classically assigned to the lower cakras —
+    heart rate (Anāhata), digestion (Maṇipūra), and the pelvic organs
+    near Mūlādhāra — which gives the traditional cakra sequence an
+    anatomical plausibility independent of any claim about subtle
+    energy: each named center sits near a real cluster of
+    vagally-innervated organs, in the same ascending order the tradition
+    describes.
+  </p>
+  <p>
+    Extended-exhale prāṇāyāma of the kind associated with Kuṇḍalinī
+    preparation reliably increases vagal tone, measurable as increased
+    heart-rate variability and reduced cortisol output. <sup>[5]</sup>
+    What remains a doctrinal rather than an empirical claim is that this
+    vagal shift constitutes or causes the "rising" of a distinct energy
+    along the spine; what is empirically supported is only that the
+    same practices reliably shift autonomic balance in a
+    parasympathetic direction, and that this shift is subjectively
+    reported by practitioners in the vocabulary of ascent.
+  </p>
+
+  <h3>Neurobiology and Neuroplasticity <span class="claim-tag empirical">Empirical</span></h3>
+  <p>
+    fMRI studies of sustained Kuṇḍalinī Yoga practice report measurable
+    structural and functional change, including increased right
+    hippocampal volume and altered functional connectivity between
+    frontal attention networks and limbic structures in long-term
+    practitioners compared to matched controls. <sup>[6]</sup> The
+    hippocampal finding is notable because the hippocampus is centrally
+    involved in memory consolidation and stress regulation — a
+    structural change consistent with, though not proof of, the
+    tradition's own claim that sustained practice measurably alters a
+    practitioner's baseline emotional reactivity over time, not merely
+    their state during practice itself.
+  </p>
+
+  <h3>The Endocrine System <span class="claim-tag empirical">Empirical</span> / <span class="claim-tag doctrinal">Doctrinal</span></h3>
+  <p>
+    Pranayama and associated breathwork measurably affect the
+    hypothalamic-pituitary-adrenal axis, with documented shifts in
+    cortisol and, in some studies, thyroid and gonadal hormone markers
+    following sustained practice. <sup>[7]</sup> The tradition's own
+    mapping — assigning specific endocrine glands to specific cakras
+    (thyroid to Viśuddha, adrenals to Maṇipūra, gonads to
+    Svādhiṣṭhāna) — is a doctrinal correspondence developed centuries
+    before endocrinology existed as a discipline; the correspondence is
+    suggestive in its anatomical proximity but is not treated here as an
+    established causal mechanism, only as a traditional schema this
+    Part records accurately without overstating its verified status.
+  </p>
+</section>
+
+<section class="section-block" id="phenomenology-clinical">
+  <h2>Phenomenology and Clinical Perspectives</h2>
+  <h3>Somatosensory and Auditory Experience <span class="claim-tag doctrinal">Doctrinal</span></h3>
+  <p>
+    First-person accounts of Kuṇḍalinī awakening converge, across widely
+    separated practitioners and lineages, on a recognizable cluster:
+    inner sound (nāda) heard independent of any external source, heat
+    rising along the spine, spontaneous light or visual phenomena, and
+    involuntary movement (kriyā) — trembling, spinal arching,
+    unbidden postures. <sup>[8]</sup> The cross-cultural and
+    cross-temporal consistency of this cluster is itself a datum worth
+    taking seriously as phenomenology, independent of any claim about
+    its ultimate cause: whatever the underlying mechanism, a
+    recognizable, describable experience recurs with enough regularity
+    that clinical researchers have found it useful to name and study it
+    as its own category, treated in the next subsection.
+  </p>
+
+  <h3>Spiritual Emergence versus Psychosis <span class="claim-tag empirical">Empirical</span></h3>
+  <p>
+    Peer-reviewed clinical literature on spiritually transformative
+    experiences (STEs) draws a working distinction from psychotic
+    disorder along several axes rather than a single symptom checklist:
+    insight (an STE is typically recognized by the person as unusual
+    without a loss of the capacity to recognize it as such, whereas
+    psychosis characteristically erodes that reflective capacity),
+    functioning (STEs, even intense ones, are more often followed by
+    intact or improved social and occupational functioning, where
+    psychosis more often degrades it), duration and course (STEs
+    typically resolve or integrate over a bounded period, while
+    untreated psychosis tends toward a more chronic or escalating
+    course), and the presence or absence of persistent delusional
+    conviction detached from context. <sup>[9]</sup> Clinicians working
+    in this area caution explicitly against the two most common
+    misreadings in either direction: pathologizing a genuine and
+    ultimately integrable spiritual crisis as psychiatric illness, and
+    conversely, spiritually reframing what is in fact an emerging
+    psychotic process to avoid necessary clinical care. This Part treats
+    that distinction as load-bearing rather than incidental — the
+    tradition's own literature repeatedly warns that Kuṇḍalinī practice
+    undertaken without preparation (a stable Yama-Niyama foundation, in
+    this series' own vocabulary from Part Three) can precipitate
+    genuine destabilization, and the clinical distinction above is the
+    contemporary vocabulary for taking that traditional warning
+    seriously rather than romanticizing it.
+  </p>
+</section>
+
+<section class="section-block" id="bridge-devi-stotras">
+  <h2>Bridge: The Ascent Completed in Ritual Form</h2>
+  <p>
+    The four-level and thirty-six-Tattva frameworks developed above
+    describe Vāk's ascent as doctrine and as inner process. The Devī
+    stotra corpus this Part now introduces — Lalitā Sahasranāma, Lalitā
+    Triśatī, Durgā Saptaśatī, Devī Khaḍgamālā, Devī Sūktam, and the
+    Lalitopākhyāna — are not a separate topic appended to this
+    discussion; they are Vaikharī-level ritual instantiations of the
+    identical descent-and-ascent structure, each stotra a complete,
+    spoken enactment of the same movement from Parā to Vaikharī and
+    back. The Devī Sūktam is the Ṛgvedic hymn in which Vāk is herself
+    personified as the goddess pervading all the Tattvas already
+    catalogued above — the same hymn's tradition of self-declaration
+    ("I move with the Rudras, the Vasus, the Ādityas...") is Vāk
+    describing her own pervasion of the manifest order from within it,
+    voiced aloud as Vaikharī describing Parā. <sup>[10]</sup> The Lalitā
+    Sahasranāma's thousand names, read against the Tattva table above,
+    function as a sustained, name-by-name traversal of the same
+    thirty-six principles — each nāma a Vaikharī-level utterance whose
+    recitation is traditionally held to re-enact, in miniature, the very
+    ascent this Part has just described in doctrinal terms. The
+    following sections take up each of the six texts in turn, showing
+    concretely where each sits along the ascent this Preface has
+    established as the organizing structure for all of Part Six.
+  </p>
+</section>
+
+<!-- Footnote anchors [1]-[10] — renumber against Part Five's closing
+     note and append full citations to the running bibliography block. -->
+<!-- ============================================================
+     SERIES A EXTENDED — PART SIX: "KUṆḌALINĪ: VĀK AS ASCENT"
+     ABSTRACT / PREFACE / SUBJECTIVE-OBJECTIVE FRAME
+     Injectable block — insert before closing </body>.
+     Swap class names below (masthead, section-block, sloka-block,
+     glossary-table, tattva-table, claim-tag) for your site's actual
+     stylesheet classes if these labels differ.
+     Footnote numbering continues from Part Five's final note (renumber
+     [n] markers to your running sequence before publishing).
+     ============================================================ -->
+
+<section class="masthead-strip" id="part6-abstract">
+  <div class="devanagari-strip">कुण्डलिनी वाक् आरोहणम्</div>
+  <p class="section-kicker">Series A Extended · Part Six</p>
+  <h1 class="section-title">Kuṇḍalinī: Vāk as Ascent</h1>
+  <p class="section-subtitle">
+    From the unstruck silence of Parā to the articulated word of Vaikharī —
+    and the ascent of Kuṇḍalinī as the same movement read along the spine
+    rather than along the breath.
+  </p>
+</section>
+
+<section class="section-block" id="abstract">
+  <h2>Abstract</h2>
+  <p>
+    Parts Two through Five of this series established Śabdabrahman as the
+    ground of manifestation and Mātṛkā Śāstra as the mechanism by which
+    undifferentiated sound differentiates into the fifty-one root
+    phonemes. Part Six asks a narrower question those parts left open:
+    if sound descends from silence into speech, what is the discipline by
+    which a practitioner reverses that descent — and what, if anything,
+    does the body register when the reversal is undertaken deliberately
+    rather than merely theorized? The answer this Part develops is that
+    the four traditionally named levels of Vāk — Parā, Paśyantī, Madhyamā,
+    Vaikharī — are not only a model of how speech comes to be spoken, but
+    a map of an ascent the Tantric traditions locate in the physical
+    body and call Kuṇḍalinī. The two are treated here as one process
+    described in two vocabularies: the grammarian's account of speech
+    unfolding outward from Parā, and the Tantric practitioner's account
+    of Śakti coiled at the base of the spine uncoiling upward through
+    the same four stages in reverse. Where the tradition's claims
+    intersect with autonomic physiology, fMRI neuroimaging, and the
+    clinical literature distinguishing spiritually transformative
+    experience from psychiatric crisis, this Part states plainly which
+    claims are doctrinal and which are empirically tested — a
+    distinction this series has held since Part One and does not
+    relax here.
+  </p>
+</section>
+
+<section class="section-block" id="preface">
+  <h2>Preface</h2>
+  <p>
+    A note on why this Part exists where it does in the series. Part
+    Three established Tantra's operative grammar — that reality is
+    experienced through a graded descent from Śiva-Śakti's unity into
+    the thirty-six Tattvas of manifest experience. Part Five, on the
+    yogic technology of speech, established prāṇa and citta as the two
+    substrates through which Vāk moves before it is voiced. Kuṇḍalinī is
+    where those two prior accounts converge: it is Tantra's Tattva
+    doctrine and Yoga Śāstra's account of prāṇa-citta, applied
+    specifically to the question of ascent. A reader arriving at Part
+    Six without the two preceding frameworks would find the Kuṇḍalinī
+    material intelligible only as isolated physiological claims about
+    the spine and the nervous system; read against Parts Three and Five,
+    it is instead the completion of an argument already two-thirds
+    built.
+  </p>
+</section>
+
+<section class="section-block" id="subjective-objective">
+  <h2>Subjective and Objective Understanding</h2>
+  <p>
+    This Part maintains, more explicitly than prior sections, a running
+    distinction between two registers of claim, tagged inline throughout:
+  </p>
+  <div class="claim-tag-key">
+    <span class="claim-tag doctrinal">Doctrinal</span>
+    <span class="claim-tag-desc">a traditional claim, stated in its own terms, not currently testable by instrumentation — e.g., that a specific Tattva "unwinds" at a specific cakra.</span>
+    <span class="claim-tag empirical">Empirical</span>
+    <span class="claim-tag-desc">a claim with published, peer-reviewed physiological or clinical support — e.g., vagal tone shifts under sustained pranayama, or fMRI-measured hippocampal volume change after Kuṇḍalinī Yoga practice.</span>
+  </div>
+  <p>
+    The subjective register is the practitioner's own account — inner
+    sound (nāda), heat, light, tremor (kriyā) — reported consistently
+    across centuries of first-person testimony but not independently
+    verifiable by a third party. The objective register is what can be
+    measured from outside the practitioner: heart-rate variability,
+    cortical connectivity, hormonal markers. This Part keeps both
+    registers on the page without collapsing one into the other. A
+    kriyā is not "explained away" by naming its likely autonomic
+    correlate, nor is the autonomic correlate demoted to metaphor
+    because a Tantric text also describes it in cosmological language.
+    They are two descriptions of one event, given in two vocabularies
+    that arose independently of each other.
+  </p>
+</section>
+
+<section class="section-block" id="four-levels">
+  <h2>The Four Levels of Speech: Consciousness from Silence to Sound</h2>
+  <p>
+    The scheme is stated earliest in the Ṛgveda's Asya Vāmīya hymn, which
+    claims speech is "measured out in four stages," of which the wise
+    know all four but ordinary speakers voice only the last. <sup>[1]</sup>
+  </p>
+
+  <div class="sloka-block">
+    <p class="sloka-dev">चत्वारि वाक्परिमिता पदानि तानि विदुर्ब्राह्मणा ये मनीषिणः । गुहा त्रीणि निहिता नेङ्गयन्ति तुरीयं वाचो मनुष्या वदन्ति ॥</p>
+    <p class="sloka-translit">catvāri vāk parimitā padāni tāni vidur brāhmaṇā ye manīṣiṇaḥ | guhā trīṇi nihitā neṅgayanti turīyaṃ vāco manuṣyā vadanti</p>
+    <p class="sloka-trans">"Speech is measured out in four stages; these the wise know. Three, hidden in secret, do not move; the fourth is what people ordinarily speak."</p>
+    <p class="sloka-source">Ṛgveda 1.164.45</p>
+  </div>
+
+  <p>
+    Bhartṛhari's Vākyapadīya names the four directly and gives Parā a
+    technical definition later Tantric authors adopt without alteration:
+    not "unmanifest" in the sense of absent, but unmanifest in the sense
+    of undifferentiated — Śabdabrahman prior to any distinction between
+    one word and another. <sup>[2]</sup>
+  </p>
+
+  <table class="glossary-table">
+    <tr><th>Level</th><th>Devanāgarī</th><th>Character</th><th>Kuṇḍalinī Correlate</th></tr>
+    <tr>
+      <td>Parā</td><td>परा</td>
+      <td>The supreme, unmanifest energy — potential prior to any
+        distinction of meaning. Not silence as absence, but silence as
+        undifferentiated fullness.</td>
+      <td>Śakti coiled at Mūlādhāra, prior to any awakening — potential
+        energy, not yet current.</td>
+    </tr>
+    <tr>
+      <td>Paśyantī</td><td>पश्यन्ती</td>
+      <td>"Seeing" speech — a unitary, intuitive flash of meaning, whole
+        and undivided, prior to grammar or sequence.</td>
+      <td>The initial rising of Śakti past Mūlādhāra into Svādhiṣṭhāna
+        and Maṇipūra — felt as a single ascending current, not yet
+        differentiated into thought.</td>
+    </tr>
+    <tr>
+      <td>Madhyamā</td><td>मध्यमा</td>
+      <td>The intermediate intellectual level — inner dialogue,
+        grammatically structured but not yet voiced.</td>
+      <td>Śakti's ascent through Anāhata and Viśuddha — where current
+        becomes differentiated into felt inner experience: thought,
+        image, and the first articulate impulse.</td>
+    </tr>
+    <tr>
+      <td>Vaikharī</td><td>वैखरी</td>
+      <td>The gross, articulated, external speech — the only level an
+        outside listener ever hears.</td>
+      <td>Śakti's arrival at Ājñā and Sahasrāra, or its outward
+        expression through voice, gesture, and act once the ascent
+        completes or is consciously directed outward again.</td>
+    </tr>
+  </table>
+
+  <p>
+    The correlate column above is stated as doctrinal, not empirical: no
+    instrument locates Śakti as a physical current at a spinal point.
+    What is defensible as more than metaphor is the structural parallel
+    itself — both schemes describe a single potential differentiating,
+    in fixed stages, from undivided unity toward gross multiplicity, and
+    the Tantric authors who first mapped Kuṇḍalinī onto the cakras were,
+    demonstrably, working from grammarians already using this exact
+    four-stage vocabulary for speech. <sup>[3]</sup> The mapping is not
+    an imposition by later syncretists; it is continuous with the
+    source tradition's own categories.
+  </p>
+</section>
+
+<section class="section-block" id="tantric-cosmology">
+  <h2>Tantric Cosmology: The 36 Tattvas and the Ascent of Vāk</h2>
+  <p>
+    Kashmir Śaivism's thirty-six Tattva scheme extends the Sāṅkhya
+    system's twenty-five principles (Prakṛti and its evolutes, up to and
+    including the five elements) by adding eleven higher principles
+    above Puruṣa, accounting for the descent from Paramaśiva into
+    limited individual experience. <sup>[4]</sup> The ascent of Vāk —
+    and of Kuṇḍalinī — is this same ladder climbed in the opposite
+    direction: what descended into contraction is, in sādhanā,
+    deliberately retraced back toward its source.
+  </p>
+
+  <table class="tattva-table">
+    <tr><th>Tattva Group</th><th>Tattvas (36→1)</th><th>Vāk Level</th><th>Cakra Correlate (doctrinal)</th></tr>
+    <tr>
+      <td>Śuddha (Pure) Tattvas</td>
+      <td>Śiva, Śakti</td>
+      <td>Parā</td>
+      <td>Sahasrāra / beyond form — the source the ascent moves toward, not a location it passes through</td>
+    </tr>
+    <tr>
+      <td>Śuddha-Aśuddha (Pure-Impure) Tattvas</td>
+      <td>Sadāśiva, Īśvara, Śuddhavidyā, then Māyā and its five Kañcukas (Kalā, Vidyā, Rāga, Kāla, Niyati)</td>
+      <td>Paśyantī → early Madhyamā</td>
+      <td>Ājñā — the point at which undivided awareness first accepts the limitations (Kañcukas) that make individual experience possible</td>
+    </tr>
+    <tr>
+      <td>Aśuddha (Impure) Tattvas — Puruṣa through Prakṛti</td>
+      <td>Puruṣa, Prakṛti, Buddhi, Ahaṅkāra, Manas</td>
+      <td>Madhyamā</td>
+      <td>Viśuddha, Anāhata — where thought and the sense of a separate self (Ahaṅkāra) are organized before any word is voiced</td>
+    </tr>
+    <tr>
+      <td>Aśuddha Tattvas — Sense and Action Faculties</td>
+      <td>five Jñānendriyas, five Karmendriyas</td>
+      <td>Vaikharī (approach)</td>
+      <td>Maṇipūra, Svādhiṣṭhāna — the faculties of perception and action that carry inner content toward outward expression</td>
+    </tr>
+    <tr>
+      <td>Aśuddha Tattvas — Gross Elements</td>
+      <td>five Tanmātras, five Mahābhūtas (Ākāśa, Vāyu, Agni, Ap, Pṛthivī)</td>
+      <td>Vaikharī</td>
+      <td>Mūlādhāra — the grossest, most differentiated end of the descent; the base at which Kuṇḍalinī is said to lie coiled</td>
+    </tr>
+  </table>
+
+  <p>
+    Two metaphors recur across the Śaiva sources for this relationship
+    and are worth unpacking rather than merely naming. The first is the
+    spider and its web: the spider (Śiva-consciousness) emits the web
+    (the thirty-six Tattvas) entirely from its own substance, and can, at
+    will, draw the web back into itself without loss — manifestation is
+    not a diminishment of the source, the way a spider is not depleted
+    by producing silk. <sup>[4]</sup> The second is the seed and the
+    tree: the thirty-six-Tattva universe is present in seed-form within
+    Parā the way the entire tree is present, unexpressed, within a
+    single seed — the ascent of Kuṇḍalinī is not the construction of
+    something new at each cakra, but the progressive revealing of what
+    was already latent in the seed from the first stage. Both metaphors
+    make the same doctrinal point from different angles: the ascent is
+    a return to an already-complete source, not an accumulation of
+    something the practitioner previously lacked.
+  </p>
+</section>
+
+<section class="section-block" id="ans-vagal">
+  <h2>Neurological and Physiological Correlates</h2>
+  <h3>The Autonomic Nervous System and Vagal Activation <span class="claim-tag empirical">Empirical</span></h3>
+  <p>
+    A recurring model in the contemporary literature identifies reported
+    Kuṇḍalinī phenomena — waves of heat, involuntary movement, altered
+    breath rhythm — with heightened but shifting autonomic arousal, most
+    specifically with vagal nerve activity. <sup>[5]</sup> The vagus
+    nerve, as the principal channel of the parasympathetic system,
+    governs the very organs classically assigned to the lower cakras —
+    heart rate (Anāhata), digestion (Maṇipūra), and the pelvic organs
+    near Mūlādhāra — which gives the traditional cakra sequence an
+    anatomical plausibility independent of any claim about subtle
+    energy: each named center sits near a real cluster of
+    vagally-innervated organs, in the same ascending order the tradition
+    describes.
+  </p>
+  <p>
+    Extended-exhale prāṇāyāma of the kind associated with Kuṇḍalinī
+    preparation reliably increases vagal tone, measurable as increased
+    heart-rate variability and reduced cortisol output. <sup>[5]</sup>
+    What remains a doctrinal rather than an empirical claim is that this
+    vagal shift constitutes or causes the "rising" of a distinct energy
+    along the spine; what is empirically supported is only that the
+    same practices reliably shift autonomic balance in a
+    parasympathetic direction, and that this shift is subjectively
+    reported by practitioners in the vocabulary of ascent.
+  </p>
+
+  <h3>Neurobiology and Neuroplasticity <span class="claim-tag empirical">Empirical</span></h3>
+  <p>
+    fMRI studies of sustained Kuṇḍalinī Yoga practice report measurable
+    structural and functional change, including increased right
+    hippocampal volume and altered functional connectivity between
+    frontal attention networks and limbic structures in long-term
+    practitioners compared to matched controls. <sup>[6]</sup> The
+    hippocampal finding is notable because the hippocampus is centrally
+    involved in memory consolidation and stress regulation — a
+    structural change consistent with, though not proof of, the
+    tradition's own claim that sustained practice measurably alters a
+    practitioner's baseline emotional reactivity over time, not merely
+    their state during practice itself.
+  </p>
+
+  <h3>The Endocrine System <span class="claim-tag empirical">Empirical</span> / <span class="claim-tag doctrinal">Doctrinal</span></h3>
+  <p>
+    Pranayama and associated breathwork measurably affect the
+    hypothalamic-pituitary-adrenal axis, with documented shifts in
+    cortisol and, in some studies, thyroid and gonadal hormone markers
+    following sustained practice. <sup>[7]</sup> The tradition's own
+    mapping — assigning specific endocrine glands to specific cakras
+    (thyroid to Viśuddha, adrenals to Maṇipūra, gonads to
+    Svādhiṣṭhāna) — is a doctrinal correspondence developed centuries
+    before endocrinology existed as a discipline; the correspondence is
+    suggestive in its anatomical proximity but is not treated here as an
+    established causal mechanism, only as a traditional schema this
+    Part records accurately without overstating its verified status.
+  </p>
+</section>
+
+<section class="section-block" id="phenomenology-clinical">
+  <h2>Phenomenology and Clinical Perspectives</h2>
+  <h3>Somatosensory and Auditory Experience <span class="claim-tag doctrinal">Doctrinal</span></h3>
+  <p>
+    First-person accounts of Kuṇḍalinī awakening converge, across widely
+    separated practitioners and lineages, on a recognizable cluster:
+    inner sound (nāda) heard independent of any external source, heat
+    rising along the spine, spontaneous light or visual phenomena, and
+    involuntary movement (kriyā) — trembling, spinal arching,
+    unbidden postures. <sup>[8]</sup> The cross-cultural and
+    cross-temporal consistency of this cluster is itself a datum worth
+    taking seriously as phenomenology, independent of any claim about
+    its ultimate cause: whatever the underlying mechanism, a
+    recognizable, describable experience recurs with enough regularity
+    that clinical researchers have found it useful to name and study it
+    as its own category, treated in the next subsection.
+  </p>
+
+  <h3>Spiritual Emergence versus Psychosis <span class="claim-tag empirical">Empirical</span></h3>
+  <p>
+    Peer-reviewed clinical literature on spiritually transformative
+    experiences (STEs) draws a working distinction from psychotic
+    disorder along several axes rather than a single symptom checklist:
+    insight (an STE is typically recognized by the person as unusual
+    without a loss of the capacity to recognize it as such, whereas
+    psychosis characteristically erodes that reflective capacity),
+    functioning (STEs, even intense ones, are more often followed by
+    intact or improved social and occupational functioning, where
+    psychosis more often degrades it), duration and course (STEs
+    typically resolve or integrate over a bounded period, while
+    untreated psychosis tends toward a more chronic or escalating
+    course), and the presence or absence of persistent delusional
+    conviction detached from context. <sup>[9]</sup> Clinicians working
+    in this area caution explicitly against the two most common
+    misreadings in either direction: pathologizing a genuine and
+    ultimately integrable spiritual crisis as psychiatric illness, and
+    conversely, spiritually reframing what is in fact an emerging
+    psychotic process to avoid necessary clinical care. This Part treats
+    that distinction as load-bearing rather than incidental — the
+    tradition's own literature repeatedly warns that Kuṇḍalinī practice
+    undertaken without preparation (a stable Yama-Niyama foundation, in
+    this series' own vocabulary from Part Three) can precipitate
+    genuine destabilization, and the clinical distinction above is the
+    contemporary vocabulary for taking that traditional warning
+    seriously rather than romanticizing it.
+  </p>
+</section>
+
+<section class="section-block" id="bridge-devi-stotras">
+  <h2>Bridge: The Ascent Completed in Ritual Form</h2>
+  <p>
+    The four-level and thirty-six-Tattva frameworks developed above
+    describe Vāk's ascent as doctrine and as inner process. The Devī
+    stotra corpus this Part now introduces — Lalitā Sahasranāma, Lalitā
+    Triśatī, Durgā Saptaśatī, Devī Khaḍgamālā, Devī Sūktam, and the
+    Lalitopākhyāna — are not a separate topic appended to this
+    discussion; they are Vaikharī-level ritual instantiations of the
+    identical descent-and-ascent structure, each stotra a complete,
+    spoken enactment of the same movement from Parā to Vaikharī and
+    back. The Devī Sūktam is the Ṛgvedic hymn in which Vāk is herself
+    personified as the goddess pervading all the Tattvas already
+    catalogued above — the same hymn's tradition of self-declaration
+    ("I move with the Rudras, the Vasus, the Ādityas...") is Vāk
+    describing her own pervasion of the manifest order from within it,
+    voiced aloud as Vaikharī describing Parā. <sup>[10]</sup> The Lalitā
+    Sahasranāma's thousand names, read against the Tattva table above,
+    function as a sustained, name-by-name traversal of the same
+    thirty-six principles — each nāma a Vaikharī-level utterance whose
+    recitation is traditionally held to re-enact, in miniature, the very
+    ascent this Part has just described in doctrinal terms. The
+    following sections take up each of the six texts in turn, showing
+    concretely where each sits along the ascent this Preface has
+    established as the organizing structure for all of Part Six.
+  </p>
+</section>
+
+<!-- Footnote anchors [1]-[10] — renumber against Part Five's closing
+     note and append full citations to the running bibliography block. -->
+<!-- ============================================================
+     SERIES A EXTENDED — PART SIX: "KUṆḌALINĪ: VĀK AS ASCENT"
+     SECTION: THE MECHANICS OF ASCENT — GRANTHIS, VĀG YOGA,
+     NEURO-THEOLOGY, SAMĀDHI, EGO-DISSOLUTION, PRIMARY SOURCES
+     Injectable block — continues after "six-texts-synthesis" from the
+     prior file. Insert before closing </body>. Same placeholder class
+     names as before — swap for your actual stylesheet classes.
+     Footnote numbering continues from [17] in the prior block.
+     ============================================================ -->
+
+<section class="section-block" id="three-granthis">
+  <h2>Piercing the Three Granthis: The Ascent's Named Obstructions</h2>
+  <p>
+    The Saptaśatī's three battles, treated earlier in this Part as a
+    narrative statement of obstruction, have a more technical parallel
+    in haṭha-yogic and Tantric physiology: the doctrine of three
+    Granthis, or psychic knots, each of which must be pierced (bhedana)
+    before Kuṇḍalinī can proceed to the next stage of ascent. <sup>[18]</sup>
+    Unlike the cakras, which are stations the ascending current passes
+    through, a Granthi is specifically a place where the current is
+    said to bind or knot upon itself — a localized resistance rather
+    than a waypoint, which is why the tradition treats their piercing
+    as effortful and occasionally destabilizing rather than automatic.
+  </p>
+  <table class="glossary-table">
+    <tr><th>Granthi</th><th>Location</th><th>What It Binds</th><th>Vāk Correlate</th></tr>
+    <tr>
+      <td>Brahma Granthi</td>
+      <td>Mūlādhāra–Svādhiṣṭhāna</td>
+      <td>Attachment to physical identity and the material world — the
+        pull to remain identified with the grossest Tattvas (the
+        Mahābhūtas and Tanmātras already tabulated as Vaikharī's
+        substrate).</td>
+      <td>The resistance to moving beyond Vaikharī itself — the
+        practitioner's identification with gross, externalized speech
+        and its material referents.</td>
+    </tr>
+    <tr>
+      <td>Viṣṇu Granthi</td>
+      <td>Anāhata</td>
+      <td>Attachment to personal power, emotional bonds, and ambition —
+        the knot the tradition locates at Ahaṅkāra, the Tattva
+        responsible for the sense of a separate, propertied self.</td>
+      <td>The resistance to relinquishing Madhyamā's inner
+        monologue — the practitioner's continued identification with
+        thought as "mine" rather than as arising process.</td>
+    </tr>
+    <tr>
+      <td>Rudra Granthi</td>
+      <td>Ājñā</td>
+      <td>The final and subtlest knot: duality itself, the residual
+        sense of a perceiver distinct from what is perceived, located
+        at the Śuddhavidyā-Māyā boundary already identified in the
+        Tattva table as the point where undivided awareness first
+        accepts individuating limitation.</td>
+      <td>The resistance to Paśyantī's collapse into undivided seeing —
+        the last trace of subject-object structure before Parā.</td>
+    </tr>
+  </table>
+  <p>
+    The doctrinal significance of naming these as three, and no more,
+    is that the tradition treats obstruction as finite and specifiable
+    rather than open-ended — a practitioner is not asked to dissolve an
+    unlimited or unnamed resistance, but three particular, previously
+    mapped ones, each corresponding to a specific Tattva-level
+    attachment already catalogued elsewhere in this Part. This is
+    consistent with the broader argument of Part Six that every
+    element of Kuṇḍalinī doctrine — cakras, Tattvas, Granthis — is one
+    coherent map described from different angles, not three
+    unrelated schemas.
+  </p>
+</section>
+
+<section class="section-block" id="vag-yoga-mechanics">
+  <h2>The Mechanics of Ascending Consciousness: Vāg Yoga</h2>
+  <h3>Prāṇāyama, Bandha, and the Two Currents <span class="claim-tag doctrinal">Doctrinal</span></h3>
+  <p>
+    Haṭha-yogic sources describe ordinary breath and attention as
+    divided between two subtle currents, Iḍā (associated with the
+    left nostril, lunar, cooling, parasympathetic in character) and
+    Piṅgalā (right nostril, solar, heating, sympathetic in character),
+    which cross at each cakra along the spine but never fully unite.
+    <sup>[19]</sup> The stated purpose of prāṇāyāma combined with
+    bandha (the physical locks — Mūla Bandha at the perineum, Uḍḍiyāna
+    Bandha at the abdomen, Jālandhara Bandha at the throat) is to
+    suspend the ordinary alternation between these two currents and
+    compel prāṇa into the central channel, Suṣumnā, which is
+    ordinarily dormant. <sup>[19]</sup> It is only once prāṇa moves
+    through Suṣumnā rather than alternating between Iḍā and Piṅgalā
+    that Kuṇḍalinī is said to be capable of ascent at all — the
+    bandhas are therefore described in the sources not as producing
+    the ascent directly, but as removing the specific physiological
+    condition (divided, alternating breath) that keeps Kuṇḍalinī
+    dormant by default.
+  </p>
+  <h3>Mantra Japa and the Inner Ear: The Four Levels as a Practice Sequence <span class="claim-tag doctrinal">Doctrinal</span></h3>
+  <p>
+    Vāg Yoga's account of mantra practice gives the four levels of
+    speech a concrete, practice-ordered sequence rather than only a
+    metaphysical one. A practitioner begins at Vaikharī, audibly
+    chanting the mantra aloud; with repetition, chanting interiorizes
+    into Madhyamā, mental repetition without vocalization; sustained
+    practice further interiorizes this into Paśyantī, where the mantra
+    is no longer repeated as discrete syllables but perceived as a
+    single, unbroken intuitive flash of meaning; and in rare, sustained
+    absorption the mantra dissolves into Parā, where japa (repetition)
+    ceases because subject, mantra, and object of meditation are no
+    longer experienced as distinct. <sup>[20]</sup> This sequence gives
+    experiential content to what the Ṛgvedic verse cited earlier in
+    this Part states abstractly — that ordinary speakers "voice only
+    the fourth" level while three remain hidden: Vāg Yoga's claim is
+    that sustained mantra practice is specifically the discipline by
+    which a practitioner comes to inhabit consciously the three levels
+    that speech ordinarily conceals.
+  </p>
+  <h3>Stages of Samādhi <span class="claim-tag doctrinal">Doctrinal</span></h3>
+  <p>
+    The dissolution of mantra-repetition through the four levels is
+    traditionally correlated with a parallel sequence of absorption
+    states, culminating in Nirvikalpa Samādhi at Sahasrāra — samādhi
+    "without construct," in which even the subtlest distinction between
+    knower and known, the residual trace the Rudra Granthi section
+    above identifies as the final obstruction, is said to dissolve
+    entirely. <sup>[21]</sup> This is presented here strictly as
+    doctrinal description of a state the tradition claims as its
+    culmination, not as a claim with any empirical instrument capable
+    of confirming its occurrence — no fMRI or EEG signature has been
+    established as diagnostic of Nirvikalpa Samādhi specifically, as
+    distinct from other deep meditative or absorptive states, and this
+    Part does not overstate the neuroscience section's findings to
+    imply otherwise.
+  </p>
+</section>
+
+<section class="section-block" id="autonomic-plexus-mapping">
+  <h2>Neuro-Theology: Cakras and the Peripheral Autonomic Plexuses</h2>
+  <p>
+    The ANS/vagal correlate discussed earlier in this Part can be made
+    more anatomically specific than a general claim about parasympathetic
+    tone. Each cakra in the traditional sequence has long been read by
+    modern commentators as corresponding to a real, named peripheral
+    nerve plexus along the spine and trunk, giving the doctrine a
+    point-by-point anatomical correspondence rather than only a general
+    one. <sup>[22]</sup>
+  </p>
+  <table class="tattva-table">
+    <tr><th>Cakra</th><th>Peripheral Plexus Correlate</th><th>Governs</th></tr>
+    <tr><td>Mūlādhāra</td><td>Coccygeal / pelvic plexus</td><td>Elimination, base pelvic-floor tone</td></tr>
+    <tr><td>Svādhiṣṭhāna</td><td>Hypogastric plexus</td><td>Reproductive and lower urinary function</td></tr>
+    <tr><td>Maṇipūra</td><td>Solar (coeliac) plexus</td><td>Digestion, gastric and hepatic regulation</td></tr>
+    <tr><td>Anāhata</td><td>Cardiac plexus</td><td>Heart rate, cardiac vagal tone</td></tr>
+    <tr><td>Viśuddha</td><td>Pharyngeal plexus</td><td>Throat, vocalization, swallowing reflex</td></tr>
+    <tr><td>Ājñā</td><td>Carotid plexus / hypothalamic-pituitary axis</td><td>Autonomic integration, hormonal regulation</td></tr>
+  </table>
+  <p>
+    This table should be read with the same caution flagged in the ANS
+    subsection above: the anatomical proximity between named cakras and
+    named plexuses is well-documented as a traditional and modern
+    interpretive correspondence, and is anatomically real in the sense
+    that these plexuses do exist at roughly the described locations and
+    do govern the described functions — but the claim that a subtle
+    energy "activates" a plexus as it "rises" remains doctrinal, since
+    no study has demonstrated sequential plexus activation correlated
+    with reported Kuṇḍalinī ascent as its own measured phenomenon,
+    distinct from general autonomic arousal. The table is best used as
+    a study aid for where the tradition's language and known human
+    neuroanatomy overlap, not as an established causal chain.
+  </p>
+</section>
+
+<section class="section-block" id="ego-dissolution">
+  <h2>Ego-Dissolution and Cognitive Reorganization</h2>
+  <p>
+    The silencing of Vaikharī and Madhyamā described in the Vāg Yoga
+    sequence above has a documented parallel in the phenomenological
+    literature on mystical and meditative ego-dissolution: reports
+    across contemplative traditions and, separately, in controlled
+    studies of deep meditative absorption converge on a description of
+    reduced self-referential mental activity, a quieting of the
+    default mode network's habitual narrative processing, and a
+    corresponding sense of boundary-loss between self and
+    surroundings. <sup>[23]</sup> This literature is cited here as
+    external, independently-derived support for a specific structural
+    claim already made in this Part on doctrinal grounds — that
+    Madhyamā (inner dialogue) is not incidental chatter but the
+    specific layer whose quieting the tradition identifies as a
+    necessary stage of ascent — without claiming that the meditation
+    research and the Tantric ascent doctrine are describing identical
+    mechanisms.
+  </p>
+</section>
+
+<section class="section-block" id="primary-sources">
+  <h2>Primary Source Engagement</h2>
+  <p>
+    Three textual sources anchor the doctrinal claims made across this
+    Part and are worth introducing directly rather than only through
+    secondary citation. Bhartṛhari's <em>Vākyapadīya</em>, already cited
+    earlier for the technical definition of Parā, remains the
+    foundational grammatical-philosophical source for the entire
+    four-level scheme and predates its Tantric application by several
+    centuries — its Brahma-kāṇḍa argues that Śabdabrahman, sound as
+    ultimate reality, is not a metaphor but the grammarian's precise
+    technical claim about the nature of consciousness itself.
+    <sup>[24]</sup> The <em>Yoga-Kuṇḍalinī Upaniṣad</em>, one of the
+    minor Yoga Upaniṣads, is the primary textual source for the
+    bandha-and-prāṇāyāma mechanics detailed above, and is more explicit
+    than most Tantric sources about the physical technique of ascent
+    rather than only its cosmological significance. <sup>[25]</sup> The
+    <em>Tantrasāra</em> of Abhinavagupta, a condensed restatement of his
+    Tantrāloka, is the primary source for the Tattva-to-Vāk-level
+    correspondences this Part has relied on throughout, and remains the
+    most authoritative single text for the Kashmir Śaiva reading of
+    Kuṇḍalinī as Parā-Vāk specifically, rather than as an energy
+    phenomenon treated separately from the doctrine of speech.
+    <sup>[26]</sup> Later sections of this Part cite these three sources
+    directly, by verse, wherever a specific doctrinal claim requires
+    textual grounding beyond summary.
+  </p>
+</section>
+
+<!-- Footnote anchors [18]-[26] continue the running sequence. Append
+     full citations: Haṭha Yoga Pradīpikā / Ṣaṭcakranirūpaṇa for the
+     three Granthis; Yoga-Kuṇḍalinī Upaniṣad for bandha/prāṇāyāma
+     mechanics; Vākyapadīya Brahma-kāṇḍa for Śabdabrahman and Parā;
+     Abhinavagupta's Tantrasāra for Tattva-Vāk correspondences;
+     published fMRI/DMN meditation literature for the ego-dissolution
+     subsection — verify each citation against your actual bibliography
+     before publishing, several are marked here as doctrinal synthesis
+     rather than direct textual quotation. -->
+<!-- ============================================================
+     SERIES A EXTENDED — PART SIX: "KUṆḌALINĪ: VĀK AS ASCENT"
+     INDIVIDUAL TOPIC TREATMENTS
+     Each section below is self-contained — no cross-references to
+     "as established earlier" or synthesis language. Insert wherever
+     each topic falls in your document's actual sequence; they are not
+     dependent on being read in this order.
+     Footnote numbering continues from [26] in the prior block.
+     ============================================================ -->
+
+<section class="section-block" id="topic-genesis">
+  <h2>Topic: The Genesis — Śiva-Śakti and the Evolution of Sound</h2>
+  <p>
+    The Śrī Vidyā account of origins begins from a single premise: that
+    what exists is not matter arranged in patterns that happen to
+    produce consciousness, but consciousness itself, vibrating —
+    Spanda, the primordial pulse Kashmir Śaivism treats as Śiva's own
+    nature prior to any act of creation. <sup>[27]</sup> Sound, in this
+    account, is not something consciousness later produces as one
+    capability among others; sound is the first and most basic mode in
+    which undivided consciousness (Śiva) begins to know itself as
+    divided into knower and known (Śakti). The genesis narrative is
+    therefore not a creation story in the sense of one thing making
+    another; it is an account of self-differentiation — Śiva and Śakti
+    are not two entities that met and produced sound between them, but
+    two aspects of one reality, and their apparent "union" in the
+    generative sense is really the name given to the moment
+    undifferentiated awareness first vibrates into the possibility of
+    distinction.
+  </p>
+  <p>
+    This is why Parā is defined as coiled Kuṇḍalinī at Mūlādhāra and,
+    simultaneously, as absolute silence and pure intent: the location
+    at the base of the spine is not where this potential begins to
+    exist, but where it is said to rest in its most compressed,
+    unexpressed form, prior to any of the differentiation that
+    Paśyantī, Madhyamā, and Vaikharī will later represent. The genesis
+    account's real claim is that the entire subsequent unfolding —
+    everything the rest of this Part discusses — is not the creation of
+    something new but the self-revealing of what this coiled potential
+    already was.
+  </p>
+</section>
+
+<section class="section-block" id="topic-yogic-ascent-vehicle">
+  <h2>Topic: The Yogic Ascent — Vāk as the Vehicle</h2>
+  <p>
+    Where the genesis account describes what exists prior to practice,
+    this topic addresses the practitioner's deliberate reversal of that
+    original descent. The premise is that liberation is not granted
+    from outside but is a re-absorption the practitioner performs on
+    their own externalized energies, using sound as the specific
+    instrument of reversal, because sound was also the specific
+    instrument of the original externalization. <sup>[28]</sup>
+  </p>
+  <p>
+    Bīja mantras occupy a precise technical role in this reversal: a
+    bīja is not a word with ordinary semantic meaning but a
+    single seed-syllable held to carry, in maximally compressed form,
+    the specific vibratory signature of a particular cakra. The
+    practice of directing sustained, focused repetition of a bīja at a
+    specific cakra is described as working the way a key works a
+    lock — not by force, but by matching the resonance the cakra is
+    already disposed to respond to. This is a meaningfully different
+    claim from the Vāg Yoga mechanics of interiorizing an entire mantra
+    through the four levels of speech (audible → mental → intuitive →
+    silent), discussed separately: bīja practice targets a specific
+    location, while the four-level interiorization describes a general
+    progression any sustained mantra practice undergoes regardless of
+    which bīja is used.
+  </p>
+</section>
+
+<section class="section-block" id="topic-speech-as-union">
+  <h2>Topic: Speech as Union — Vāk-Siddhi</h2>
+  <p>
+    The tradition names a specific culminating state distinct from
+    Samādhi itself: Vāk-Siddhi, the "perfection" or "attainment" of
+    speech, said to occur when Kuṇḍalinī pierces Ājñā and unites with
+    Śiva at Sahasrāra. <sup>[29]</sup> The defining claim of Vāk-Siddhi
+    is not merely that the practitioner attains a state of silence or
+    absorption, but that their subsequent ordinary speech — Vaikharī,
+    resumed after or alongside the absorption — carries a different
+    quality of efficacy: words spoken from this state are traditionally
+    held to manifest what they describe, because they are no longer
+    understood as originating from the practitioner's individual,
+    Ahaṅkāra-bound intention but as issuing directly from the same
+    undivided source Vaikharī was, throughout this Part's argument,
+    never actually separate from.
+  </p>
+  <p>
+    This is worth distinguishing carefully from more general claims
+    about "the power of positive speech" found in popular literature.
+    Vāk-Siddhi as the tradition describes it is not a claim about
+    optimism or intention-setting; it is a specific, high-bar
+    attainment predicated on the Ājñā-Sahasrāra union already having
+    occurred, and the tradition itself treats claims to possess
+    Vāk-Siddhi with considerable caution, since an unripe or premature
+    claim to this state is, in the tradition's own terms, more likely
+    to indicate ego-inflation at the Viṣṇu Granthi than genuine
+    attainment.
+  </p>
+</section>
+
+<section class="section-block" id="topic-involutive-descent">
+  <h2>Topic: The Involutive Descent — Śabda-Brahman from Parā to Vaikharī</h2>
+  <p>
+    This topic addresses the direction opposite to ascent: how cosmic
+    consciousness devolves outward from Parā into Vaikharī in the first
+    place, prior to and independent of any practitioner's later
+    reversal of the process. Śabda-Brahman — Brahman in the form of
+    sound — is the technical name for consciousness considered
+    specifically under this descending aspect. <sup>[30]</sup> The
+    involution is described as proceeding through successive stages of
+    increasing differentiation and increasing grossness: Parā's
+    undifferentiated potential first takes on the barest trace of
+    "aboutness" in Paśyantī (intention exists but has no yet grammatical
+    or sequential form), acquires sequential, grammatical structure in
+    Madhyamā (thought organized as if it could be spoken, though not
+    yet voiced), and finally acquires the physical apparatus of
+    articulation in Vaikharī — breath, vocal cords, tongue, and the
+    physical medium of air that carries audible sound to a listener.
+  </p>
+  <p>
+    The involutive descent is the necessary theoretical counterpart to
+    everything this Part says about ascent: ascent is only intelligible
+    as a reversal of a specific, already-described descent, and this
+    topic's purpose is to establish that descent independently, on its
+    own terms, before any practice-oriented material assumes it as
+    background.
+  </p>
+</section>
+
+<section class="section-block" id="topic-neurobiology-mantra-speech">
+  <h2>Topic: Neurobiology of Mantra and Speech</h2>
+  <p>
+    This topic addresses a narrower and more specific empirical
+    question than general autonomic arousal: what, if anything, is
+    known about the distinct neural correlates of the four levels of
+    speech themselves, considered as a spectrum from articulated sound
+    to pure intention. <sup>[31]</sup> Vaikharī's correlate is the most
+    directly established: audible speech production and perception
+    engage well-characterized motor and auditory pathways — Broca's
+    and Wernicke's areas, the primary auditory cortex, and the
+    vocal-motor pathways controlling the larynx and tongue. This is
+    uncontroversial, mainstream neurolinguistics, independent of any
+    Tantric framework.
+  </p>
+  <p>
+    The correlates proposed for Parā and Paśyantī are considerably less
+    settled and should be presented to a reader with that difference in
+    confidence made explicit. Researchers working on meditative and
+    contemplative states have reported increased gamma-band brainwave
+    coherence and altered frontal-limbic connectivity during deep,
+    non-conceptual absorption states, and some have proposed these
+    findings as plausible neural correlates of a level of awareness
+    prior to discursive, sequential thought. <sup>[31]</sup> This is a
+    genuinely suggestive parallel, but it is important to state plainly
+    that no study has been designed to specifically test the Tantric
+    four-level model as its hypothesis; the brainwave-coherence
+    findings come from meditation research pursuing its own questions,
+    and the mapping onto Parā and Paśyantī specifically is an
+    interpretive overlay this Part is applying, not a finding the
+    original researchers themselves made.
+  </p>
+</section>
+
+<section class="section-block" id="topic-mental-health-rct">
+  <h2>Topic: Mental Health Outcomes — Randomized Controlled Trials</h2>
+  <p>
+    A distinct body of applied clinical research, separate from the
+    correlational fMRI and EEG studies discussed elsewhere in this Part,
+    has tested Kuṇḍalinī Yoga specifically as a structured intervention
+    using randomized controlled trial (RCT) methodology, the standard
+    for establishing causal rather than merely correlational
+    effect. <sup>[32]</sup> Published RCTs have compared manualized
+    Kuṇḍalinī Yoga protocols against active control conditions (such as
+    stress education or cognitive-behavioral therapy) for outcomes
+    including generalized anxiety disorder symptom reduction and PTSD
+    symptom severity, generally reporting statistically significant
+    improvement in the KY arm comparable to, though not consistently
+    superior to, established active treatments. <sup>[32]</sup>
+  </p>
+  <p>
+    Two caveats belong in any honest presentation of this literature.
+    First, sample sizes in most published KY-specific RCTs remain
+    modest (typically well under two hundred participants), which
+    limits confidence in effect-size estimates and warrants describing
+    findings as promising rather than conclusively established.
+    Second, the manualized KY protocol tested in these trials
+    (breathwork, specific kriyas, mantra, and meditation combined in a
+    fixed sequence) is a modern, standardized intervention and should
+    not be treated as equivalent to the diverse, lineage-specific
+    Kuṇḍalinī sādhanā this Part discusses in its doctrinal sections —
+    the RCT evidence supports the standardized clinical protocol
+    specifically, not the full range of traditional practice this Part
+    otherwise describes.
+  </p>
+</section>
+
+<section class="section-block" id="topic-cognitive-aging">
+  <h2>Topic: Cognitive Function — Neuroprotection, Aging, and Memory</h2>
+  <p>
+    A separate strand of research has examined sustained Kuṇḍalinī Yoga
+    practice specifically in older adult populations, motivated by
+    interest in whether contemplative practice offers measurable
+    protection against age-related cognitive decline. Published
+    findings include improved subjective memory function and reduced
+    depressive symptoms in older adults following a structured KY and
+    meditation program compared to a memory-enhancement training
+    control, along with some evidence of improved executive function
+    measures. <sup>[33]</sup> Separately, structural neuroimaging work
+    in long-term meditators more broadly (not exclusively KY
+    practitioners) has reported reduced age-associated cortical
+    thinning in regions associated with attention and memory compared
+    to age-matched non-meditators. <sup>[33]</sup>
+  </p>
+  <p>
+    As with the RCT literature above, the appropriate level of
+    confidence here is "an active, promising research area with
+    published positive findings," not "an established neuroprotective
+    effect comparable in evidentiary weight to, for instance,
+    cardiovascular exercise's well-replicated cognitive benefits."
+    Sample sizes remain small relative to the broader aging-cognition
+    literature, and most studies to date are not large-scale,
+    multi-site replications.
+  </p>
+</section>
+
+<section class="section-block" id="topic-psycho-spiritual-integration">
+  <h2>Topic: Clinical Implications and Psycho-Spiritual Integration</h2>
+  <p>
+    Distinct from the STE-versus-psychosis diagnostic question treated
+    elsewhere in this Part, this topic addresses a practical clinical
+    concern: how a practitioner experiencing intense, destabilizing
+    Kuṇḍalinī phenomena — not necessarily rising to the level of a
+    diagnosable crisis — can be supported toward integration rather
+    than either suppression or unchecked escalation. <sup>[34]</sup>
+    Clinicians and researchers working in this area, notably those
+    associated with the Spiritual Emergence Network's clinical
+    framework, generally recommend a specific, conservative sequence:
+    first, reducing or pausing intensive practice (additional
+    prāṇāyāma, mantra intensity, or retreat-level immersion) rather than
+    increasing it, since the tradition's own texts consistently warn
+    against "forcing" ascent; second, grounding practices emphasizing
+    physical embodiment, regular sleep, and nutritional stability, on
+    the premise that destabilization is often exacerbated by autonomic
+    dysregulation that basic physiological stabilization can
+    address directly; and third, seeking guidance from a source
+    experienced specifically in Kuṇḍalinī phenomena, rather than either
+    a purely secular clinical setting unfamiliar with the phenomenology
+    or a purely traditional setting unfamiliar with when clinical
+    referral is warranted. <sup>[34]</sup> This integration framework is
+    presented here as a practical clinical consensus, not as this
+    Part's own doctrinal claim.
+  </p>
+</section>
+
+<!-- Footnote anchors [27]-[34] continue the running sequence. Append
+     full citations: Spanda doctrine sources (Spanda-kārikā) for the
+     Genesis topic; standard bīja-mantra sources for the Yogic Ascent
+     topic; Tantric sources on Vāk-Siddhi (treat cautiously — this
+     concept has more devotional/popular circulation than rigorous
+     textual pinning, verify against a specific primary source before
+     publishing); Vākyapadīya for the Involutive Descent; published
+     gamma-coherence meditation studies for the Neurobiology topic
+     (verify specific study citations); published KY-RCT literature
+     (e.g. Journal of Traumatic Stress, Journal of Affective Disorders)
+     for the Mental Health Outcomes topic — verify exact studies before
+     publishing, citations here are representative of known literature
+     categories rather than pinned to specific verified papers; KY
+     aging-cognition studies for the Cognitive Function topic; Spiritual
+     Emergence Network clinical framework sources for the final topic. -->
+
+
+</body>
+</html>
+
+
